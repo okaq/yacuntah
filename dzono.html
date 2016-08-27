@@ -1,2 +1,49 @@
 <!DOCTYPE html>
-ok go dzono puczicalchunkuna!
+<html lang="en">
+    <head id="zeta">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=1920,height=1080,initial-scale=1" />
+        <meta name="source" content="https://github.com/okaq/yacunta" />
+        <meta name="author" content="AQ<aq@okaq.com>" />
+        <meta name="date" content="201i8-08-28" />
+        <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAMUlEQVR4nOzNQREAIAwDQYbBvyDMpSaa356A25ef0+xW7wAAAAAAAAAAAGCxCQAA//+oDgL7xy6aVAAAAABJRU5ErkJggg==" />
+        <style type="text/css">
+            html,body{width:1920px;height:1080px;margin:0px;border:0px;padding:0px;background-color:rgba(0,0,0,0);}
+        </style>
+        <script type="text/javascript">
+            // ok
+        console.log("okaq gira yacunta dzono ok!");
+        // async load
+        (function() {
+         var a = {
+            "load": function(e) {
+                console.log(e);
+                g.init();
+            }
+            }
+            window.addEventListener("load", a.load, false);
+            })();
+// game
+var g = {
+    "init": function() {
+        var t0 = window.performance.now();
+        console.log("dzono starting...");
+        
+        // init
+        d.init();
+        
+        // stats
+        console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    }
+}
+// sampler
+var d = {
+    "init": function() {
+        console.log("starting sampler...");
+    }
+}
+        </script>
+    </head>
+    <body id="alpha">
+    </body>
+</html>
