@@ -6,7 +6,7 @@
 + In the Ancient World, the greatest "technology" available was in fact the human faculty
 + Our senses of sight and hearing. Our talent for logic and perception
 + These would have proved superior survival mechanisms than any human invention
-+ 
++ See [Notes](https://github.com/okaq/yacuntah/NOTES.md)
 
 ### Modern Tech Stack
 
