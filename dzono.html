@@ -53,8 +53,38 @@ var s = {
         // load button
         s.load = {};
         s.load.a = [512,512,0,0];
+        s.load.b = dom.canvas(s.load.a);
+        s.load.c = rgba.rc();
+        dom.add(s.load.b);
+        ren.bmp(s.load);
+        s.load.b.can.dataset.x = "load";
+        s.load.b.can.addEventListener("click", s.click, false);
 
         // sample button
+        s.samp = {};
+        s.samp.a = [512,512,600,0];
+        s.samp.b = dom.canvas(s.samp.a);
+        s.samp.c = rgba.rc();
+        dom.add(s.samp.b);
+        ren.bmp(s.samp);
+        s.samp.b.can.dataset.x = "samp";
+        s.samp.b.can.addEventListener("click", s.click, false);
+    },
+    "click": function(e) {
+        console.log(e);
+        // console.log(e.target.dataset.x);
+        var x0 = e.target.dataset.x;
+        if (x0 == "load") {
+            s.open();
+        } else {
+            s.save();
+        }
+    },
+    "open": function() {
+        console.log("opening bitmap from server");
+    },
+    "save": function() {
+        console.log("saving sample to server");
     }
 }
 // render
