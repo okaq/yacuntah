@@ -11,3 +11,15 @@
 + Contrast with our modern conception:
 + A physical collection of grey matter in the skull
 
+### Gameplay
+
++ Click Splash Screen to Begin
++ 1fps Array Animation
+
+### Tooling (Art)
+
++ Bitmap sampler (dzonocaob)
++ Import a bmp/ asset via command line
++ Sample using Canvas2d pixel manipulation api
+
+
