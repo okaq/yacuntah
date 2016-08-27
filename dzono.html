@@ -31,6 +31,7 @@ var g = {
         
         // init
         dom.init();
+        net.init();
         s.init();
         
         // stats
@@ -96,9 +97,28 @@ var s = {
     },
     "open": function() {
         console.log("opening bitmap from server");
+        net.load();
     },
     "save": function() {
         console.log("saving sample to server");
+    }
+}
+// xhr
+var net = {
+    "init": function() {
+        net.urls = [
+            "/load", // call to get sample bitmap
+            "/save"  // send json bitmap data to server for storage 
+        ];
+    },
+    "load": function() {
+        window.fetch(net.urls[0]).then(net.loaded).catch(net.error);
+    },
+    "loaded": function(response) {
+        console.log(response);
+    },
+    "error": function(err) {
+        console.log(err);
     }
 }
 // render
