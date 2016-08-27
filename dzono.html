@@ -69,6 +69,16 @@ var s = {
         ren.bmp(s.samp);
         s.samp.b.can.dataset.x = "samp";
         s.samp.b.can.addEventListener("click", s.click, false);
+
+        // pix button
+        s.pix = {};
+        s.pix.a = [1024,128,44,600];
+        s.pix.b = dom.canvas(s.pix.a);
+        s.pix.c = rgba.rc();
+        dom.add(s.pix.b);
+        ren.bmp(s.pix);
+        s.pix.b.can.dataset.x = "pix";
+        s.pix.b.can.addEventListener("click", s.pixel, false);
     },
     "click": function(e) {
         console.log(e);
@@ -79,6 +89,10 @@ var s = {
         } else {
             s.save();
         }
+    },
+    "pixel": function(e) {
+        console.log(e);
+        console.log("begin sampling using pixel manipulation api");
     },
     "open": function() {
         console.log("opening bitmap from server");
