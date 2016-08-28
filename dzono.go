@@ -8,6 +8,7 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "net/http"
 )
@@ -26,7 +27,15 @@ func LoadHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println("Sample to load: ")
     s0 := ""
     fmt.Scanln(&s0)
-    fmt.Println(s0)
+    fmt.Printf("Sending %s.\n", s0)
+    s1 := make([]string, 1)
+    s1[0] = s0
+    j0, err := json.Marshal(s1)
+    if err != nil {
+        fmt.Println(err)
+    }
+    w.Header().Set("Content-Type", "application/json")
+    w.Write(j0)
 }
 
 func main() {

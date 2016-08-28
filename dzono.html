@@ -116,6 +116,10 @@ var net = {
     },
     "loaded": function(response) {
         console.log(response);
+        response.json().then(net.loader);
+    },
+    "loader": function(json) {
+        console.log(json);
     },
     "error": function(err) {
         console.log(err);
