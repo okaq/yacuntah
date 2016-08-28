@@ -94,6 +94,10 @@ var s = {
     "pixel": function(e) {
         console.log(e);
         console.log("begin sampling using pixel manipulation api");
+        s.p = s.load.b.con.getImageData(0,0,s.load.b.can.width,s.load.b.can.height);
+        s.q = s.p.data;
+        var n0 = 512 * 512 * 4;
+        console.log(s.q.length, n0);
     },
     "open": function() {
         console.log("opening bitmap from server");
