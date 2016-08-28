@@ -99,6 +99,15 @@ var s = {
         console.log("opening bitmap from server");
         net.load();
     },
+    "display": function() {
+        console.log("displaying bitmap sample from server");
+        s.i = new Image();
+        s.i.addEventListener("load", s.draw, false);
+        s.i.src = net.j[0];
+    },
+    "draw": function() {
+        ren.img(s.i, s.load.b);
+    },
     "save": function() {
         console.log("saving sample to server");
     }
@@ -120,6 +129,8 @@ var net = {
     },
     "loader": function(json) {
         console.log(json);
+        net.j = json;
+        s.display();
     },
     "error": function(err) {
         console.log(err);
@@ -130,6 +141,9 @@ var ren = {
     "bmp": function(s0) {
         s0.b.con.fillStyle = rgba.css(s0.c);
         s0.b.con.fillRect(0,0,s0.b.can.width,s0.b.can.height);
+    },
+    "img": function(img0, c0) {
+        c0.con.drawImage(img0, 0, 0);
     }
 }
 // dom

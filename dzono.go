@@ -38,9 +38,20 @@ func LoadHandler(w http.ResponseWriter, r *http.Request) {
     w.Write(j0)
 }
 
+func SampHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+    fmt.Println(r.URL)
+    http.ServeFile(w, r, r.URL.Path[1:])
+    // http.FileServer behavior change in go1.7?
+}
+
 func main() {
     fmt.Println("starting dzono web server on localhost:8080")
+    // http.Handle("/samp/", http.StripPrefix("/samp", http.FileServer(http.Dir("samp/"))))
     http.HandleFunc("/", DzonoHandler)
     http.HandleFunc("/load", LoadHandler)
+    // fs0 := http.FileServer(http.Dir("samp"))
+    // http.Handle("/samp/", http.StripPrefix("/samp", http.FileServer(http.Dir("samp/"))))
+    http.HandleFunc("/samp/", SampHandler)
     http.ListenAndServe(":8080", nil)
 }
