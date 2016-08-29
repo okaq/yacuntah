@@ -94,10 +94,27 @@ var s = {
     "pixel": function(e) {
         console.log(e);
         console.log("begin sampling using pixel manipulation api");
+        s.grab();
+    },
+    "grab": function() {
+        // grab pixel data
         s.p = s.load.b.con.getImageData(0,0,s.load.b.can.width,s.load.b.can.height);
         s.q = s.p.data;
         var n0 = 512 * 512 * 4;
         console.log(s.q.length, n0);
+        // generate new data from math
+    },
+    "gen": function() {
+        // procedural generation
+        s.r = s.q.slice(0);
+        // pixel block size
+        var w0 = 8;
+        var h0 = 8;
+        var t0 = (w0 * h0) >>> 0;
+        for (var y0 = 0; y0 < 512; y0++) {
+            for (var x0 = 0; x0 < 512; x0++) {
+            }
+        }
     },
     "open": function() {
         console.log("opening bitmap from server");
