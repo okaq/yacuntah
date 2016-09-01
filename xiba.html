@@ -31,9 +31,25 @@ var g = {
         
         // init
         dom.init();
+        d.init();
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    }
+}
+// data
+var d = {
+    "init": function() {
+        // hex array
+        d.h = [];
+        // dimensions
+        d.w = 1920;
+        d.h = 1080;
+        d.w0 = 16;
+        d.h0 = 16;
+        d.nx = (d.w / d.w0) >>> 0;
+        d.ny = (d.h / d.h0) >>> 0;
+        d.nt = (d.nx * d.ny) >>> 0;
     }
 }
 // dom
