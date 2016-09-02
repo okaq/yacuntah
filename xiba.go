@@ -18,8 +18,13 @@ func XibaHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, INDEX)
 }
 
+func JsonHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+}
+
 func main() {
     fmt.Println("starting xiba web server on http://localhost:8080");
     http.HandleFunc("/", XibaHandler)
+    http.HandleFunc("/json", JsonHandler)
     http.ListenAndServe(":8080", nil)
 }
