@@ -53,6 +53,13 @@ var d = {
         // each square cell inscribes a circle
         // six equadistant points around that circle
         // in polar coordinates describe a transfromed hexagon
+        for (var i = 0; i < d.nt; i++) {
+            var x0 = i % d.nx;
+            var y0 = (i / d.ny) >>> 0;
+            d.h[i] = {};
+            d.h[i].x = (x0 * d.w0) >>> 0;
+            d.h[i].y = (y0 * d.h0) >>> 0;
+        }
     }
 }
 // dom
