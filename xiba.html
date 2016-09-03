@@ -59,6 +59,9 @@ var d = {
             d.h[i] = {};
             d.h[i].x = (x0 * d.w0) >>> 0;
             d.h[i].y = (y0 * d.h0) >>> 0;
+            d.h[i].r = [d.w0, d.h0, x0, y0];
+            d.h[i].c = dom.canvas(d.h[i].r);
+            dom.add(d.h[i].c);
         }
     }
 }
