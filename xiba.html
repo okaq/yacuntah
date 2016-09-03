@@ -32,6 +32,7 @@ var g = {
         // init
         dom.init();
         d.init();
+        ren.test();
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
@@ -43,25 +44,34 @@ var d = {
         // hex array
         d.h = [];
         // dimensions
-        d.w = 1920;
-        d.h = 1080;
-        d.w0 = 16;
-        d.h0 = 16;
-        d.nx = (d.w / d.w0) >>> 0;
-        d.ny = (d.h / d.h0) >>> 0;
+        d.w0 = 1920;
+        d.h0 = 1080;
+        d.w1 = 20;
+        d.h1 = 20;
+        d.nx = (d.w0 / d.w1) >>> 0;
+        d.ny = (d.h0 / d.h1) >>> 0;
         d.nt = (d.nx * d.ny) >>> 0;
         // each square cell inscribes a circle
         // six equadistant points around that circle
         // in polar coordinates describe a transfromed hexagon
         for (var i = 0; i < d.nt; i++) {
             var x0 = i % d.nx;
-            var y0 = (i / d.ny) >>> 0;
+            var y0 = (i / d.nx) >>> 0;
             d.h[i] = {};
-            d.h[i].x = (x0 * d.w0) >>> 0;
-            d.h[i].y = (y0 * d.h0) >>> 0;
-            d.h[i].r = [d.w0, d.h0, x0, y0];
+            d.h[i].x = (x0 * d.w1) >>> 0;
+            d.h[i].y = (y0 * d.h1) >>> 0;
+            d.h[i].r = [d.w1, d.h1, d.h[i].x, d.h[i].y];
             d.h[i].c = dom.canvas(d.h[i].r);
             dom.add(d.h[i].c);
+        }
+    }
+}
+// render
+var ren = {
+    "test": function() {
+        for (var i = 0; i < d.nt; i++) {
+            d.h[i].c.con.fillStyle = rgba.rand();
+            d.h[i].c.con.fillRect(0,0,d.h[i].c.can.width,d.h[i].c.can.height);
         }
     }
 }
