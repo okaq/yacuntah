@@ -73,6 +73,12 @@ var ren = {
             d.h[i].c.con.fillStyle = rgba.rand();
             d.h[i].c.con.fillRect(0,0,d.h[i].c.can.width,d.h[i].c.can.height);
         }
+    },
+    "circle": function() {
+        // inscribed circle in each cell
+        for (var i = 0; i < d.nt; i++) {
+            d.h[i].c.con.fillStyle = rgba.rand();
+        }
     }
 }
 // dom
