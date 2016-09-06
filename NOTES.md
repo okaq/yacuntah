@@ -22,4 +22,9 @@
 + Import a bmp/ asset via command line
 + Sample using Canvas2d pixel manipulation api
 
+### Switch
 
++ Aesthetic is now Egyptian Ancient Kingdoms of the Nile
++ Two identical "pyramids" with hexagonal cells
++ The cat goddess attempts escape
++ Block her path with amphorae
