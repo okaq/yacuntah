@@ -64,6 +64,10 @@ var d = {
             d.h[i].c = dom.canvas(d.h[i].r);
             dom.add(d.h[i].c);
         }
+        // twin arrays
+        // one for player one, one for cpu
+        d.p = [];
+        d.c = [];
     }
 }
 // render
@@ -78,6 +82,7 @@ var ren = {
         // inscribed circle in each cell
         for (var i = 0; i < d.nt; i++) {
             d.h[i].c.con.fillStyle = rgba.rand();
+            // center relative to canvas cell origin
         }
     }
 }
