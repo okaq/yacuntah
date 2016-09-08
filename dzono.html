@@ -107,12 +107,19 @@ var s = {
     "gen": function() {
         // procedural generation
         s.r = s.q.slice(0);
+        console.log(s.r);
         // pixel block size
         var w0 = 8;
         var h0 = 8;
+        var nx = (512 / 8) >>> 0;
+        var ny = (512 / 8) >>> 0;
+        var nt = (nx * ny) >>> 0;
         var t0 = (w0 * h0) >>> 0;
+        console.log(nx, ny, nt, t0);
         for (var y0 = 0; y0 < 512; y0++) {
             for (var x0 = 0; x0 < 512; x0++) {
+            }
+        }
                 // outer loop
                 // inner calculation offload
                 // set pixel block in new data array
@@ -121,8 +128,6 @@ var s = {
                 // obtain pixel sub block
                 // sample block and threshold boolean
                 // write sample to all new data pixels
-            }
-        }
     },
     "open": function() {
         console.log("opening bitmap from server");
