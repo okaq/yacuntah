@@ -44,8 +44,16 @@ var hex = {
         hex.a = [];
         // dimensions
         hex.d = {};
+        // page
         hex.d.w = 1920;
         hex.d.h = 1080;
+        // block
+        hex.d.bw = 40;
+        hex.d.bh = 40;
+        hex.d.nx = (hex.d.w / hex.d.bw) >>> 0;
+        hex.d.ny = (hex.d.h / hex.d.bh) >>> 0;
+        hex.d.nt = (hex.d.nx * hex.d.ny) >>> 0;
+        console.log(hex);
     }
 }
 // dom
