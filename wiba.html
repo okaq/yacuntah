@@ -68,6 +68,11 @@ var hex = {
             hex.a[i].r0 = [hex.d.bw,hex.d.bh,hex.a[i].x0,hex.a[i].y0];
             hex.a[i].c0 = dom.canvas(hex.a[i].r0);
         }
+        // indexes
+        hex.b = []; // active canvas
+        hex.c = []; // add / rem to scene
+        hex.e = []; // event handlers
+        hex.f = []; // click history
     }
 }
 // dom
