@@ -54,6 +54,14 @@ var hex = {
         hex.d.ny = (hex.d.h / hex.d.bh) >>> 0;
         hex.d.nt = (hex.d.nx * hex.d.ny) >>> 0;
         console.log(hex);
+        // cells
+        for (var i = 0; i < hex.d.nt; i++) {
+            var x0 = i % hex.d.nx;
+            var y0 = (i / hex.d.nx) >>> 0;
+            hex.a[i] = {};
+            hex.a[i].x0 = (x0 * hex.d.bw) >>> 0;
+            hex.a[i].y0 = (y0 * hex.d.bh) >>> 0;
+        }
     }
 }
 // dom
