@@ -59,8 +59,14 @@ var hex = {
             var x0 = i % hex.d.nx;
             var y0 = (i / hex.d.nx) >>> 0;
             hex.a[i] = {};
+            // position
             hex.a[i].x0 = (x0 * hex.d.bw) >>> 0;
             hex.a[i].y0 = (y0 * hex.d.bh) >>> 0;
+            // data
+            hex.a[i].d0 = rgba.rb();
+            // canvas
+            hex.a[i].r0 = [hex.d.bw,hex.d.bh,hex.a[i].x0,hex.a[i].y0];
+            hex.a[i].c0 = dom.canvas(hex.a[i].r0);
         }
     }
 }
