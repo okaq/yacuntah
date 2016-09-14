@@ -32,9 +32,22 @@ var g = {
         // init
         dom.init();
         hex.init();
+
+        // loop
+        g.loop();
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    },
+    "loop": function() {
+        g.tick = 0;
+        g.id = window.setInterval(g.frame, 1000);
+    },
+    "frame": function() {
+        g.tick = g.tick + 1;
+        if (g.tick >= 8) {
+            window.clearInterval(g.id);
+        }
     }
 }
 // cells
