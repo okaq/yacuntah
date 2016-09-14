@@ -45,6 +45,8 @@ var g = {
     },
     "frame": function() {
         g.tick = g.tick + 1;
+        // shuf
+        hex.shuf();
         if (g.tick >= 8) {
             window.clearInterval(g.id);
         }
@@ -86,6 +88,10 @@ var hex = {
         hex.c = []; // add / rem to scene
         hex.e = []; // event handlers
         hex.f = []; // click history
+    },
+    "shuf": function() {
+        // randomize hex.b
+        // add / rem to scene
     }
 }
 // dom
