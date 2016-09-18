@@ -54,6 +54,22 @@ var g = {
 var font = {
     "init": function() {
         // font list
+        
+        // goole fonts page is populated dynamically
+        // phantomjs cannot render without ui event fires
+        // need to capture events then replay in headless to populate DOM
+
+        // for now list by hand
+        font.list = [
+            "Open Sans",
+            "Baloo Bhaina",
+            "David Libre",
+            "Roboto",
+            "Lato",
+            "Modak",
+            "Oswald",
+            "Montserrat"
+            ];
     }
 }
 // dom
