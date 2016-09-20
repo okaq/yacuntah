@@ -34,6 +34,9 @@ var g = {
         font.init();
         sce.init();
 
+        // render
+        sce.render();
+
         // loop
         g.loop();
         
@@ -57,21 +60,25 @@ var sce = {
         // globals
         sce.w = 1920;
         sce.h = 1080;
-        // list
+        // lists
         sce.list = [];
+        sce.curr = [];
+        // current maps 0,1 if displayed
 
         // soft blob blur style
         // polar random radii points for center blob
         // uniform circle for bitmap font sample points
 
         sce.pane();
-        sce.circ();
+        sce.circus();
+        console.log(sce.list);
         sce.add();
     },
     "add": function() {
         // add all scenes in list to the DOM
         for (var i = 0; i < sce.list.length; i++) {
             dom.add(sce.list[i].c);
+            sce.curr[i] = 1;
         }
     },
     "pane": function() {
@@ -86,16 +93,22 @@ var sce = {
         sce.q = {};
         var f0 = 0.70;
         var w0 = (sce.w * f0) >>> 0;
+        // circle
         var h0 = (sce.h * f0) >>> 0;
         var x0 = ((sce.w - w0) / 2) >>> 0;
         var y0 = ((sce.h - h0) / 2) >>> 0;
         sce.q.r = [w0,h0,x0,y0];
+        console.log(sce.q.r);
         sce.q.c = dom.canvas(sce.q.r);
         sce.list.push(sce.q);
     },
     "render": function() {
         // add / rem elements form scene
         // then render scene list
+        sce.p.c.con.fillStyle = rgba.css([0,0,0,1.0]);
+        sce.p.c.con.fillRect(0,0,sce.p.c.can.width,sce.p.c.can.height);
+        sce.q.c.con.fillStyle = rgba.css([255,255,255,1.0]);
+        sce.q.c.con.fillRect(0,0,sce.q.c.can.width,sce.q.c.can.height);
     }
 }
 // fonts
