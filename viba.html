@@ -54,12 +54,48 @@ var g = {
 // scene
 var sce = {
     "init": function() {
+        // globals
         sce.w = 1920;
         sce.h = 1080;
+        // list
+        sce.list = [];
 
         // soft blob blur style
         // polar random radii points for center blob
         // uniform circle for bitmap font sample points
+
+        sce.pane();
+        sce.circ();
+        sce.add();
+    },
+    "add": function() {
+        // add all scenes in list to the DOM
+        for (var i = 0; i < sce.list.length; i++) {
+            dom.add(sce.list[i].c);
+        }
+    },
+    "pane": function() {
+        // full page background pane
+        sce.p = {};
+        sce.p.r = [sce.w,sce.h,0,0];
+        sce.p.c = dom.canvas(sce.p.r);
+        sce.list.push(sce.p);
+    },
+    "circus": function() {
+        // inner gradient blob
+        sce.q = {};
+        var f0 = 0.70;
+        var w0 = (sce.w * f0) >>> 0;
+        var h0 = (sce.h * f0) >>> 0;
+        var x0 = ((sce.w - w0) / 2) >>> 0;
+        var y0 = ((sce.h - h0) / 2) >>> 0;
+        sce.q.r = [w0,h0,x0,y0];
+        sce.q.c = dom.canvas(sce.q.r);
+        sce.list.push(sce.q);
+    },
+    "render": function() {
+        // add / rem elements form scene
+        // then render scene list
     }
 }
 // fonts
