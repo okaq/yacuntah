@@ -109,6 +109,9 @@ var sce = {
         sce.p.c.con.fillRect(0,0,sce.p.c.can.width,sce.p.c.can.height);
         sce.q.c.con.fillStyle = rgba.css([255,255,255,1.0]);
         sce.q.c.con.fillRect(0,0,sce.q.c.can.width,sce.q.c.can.height);
+
+        // re-factor into loop over each scene in list
+        // then call individual render functions
     }
 }
 // fonts
