@@ -33,6 +33,7 @@ var g = {
         dom.init();
         font.init();
         sce.init();
+        db.init();
 
         // render
         sce.render();
@@ -52,6 +53,14 @@ var g = {
         if (g.tick >= 8) {
             window.clearInterval(g.id);
         }
+    }
+}
+// data
+var db = {
+    "init": function() {
+        // data oriented approach
+        // start with all the global state required
+        // then render appropriately
     }
 }
 // scene
