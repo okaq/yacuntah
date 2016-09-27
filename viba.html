@@ -55,12 +55,29 @@ var g = {
         }
     }
 }
+// play
+var play = {
+    "init": function() {
+        // a single round of play
+        // manage turns, scores, wins
+    }
+}
 // data
 var db = {
     "init": function() {
         // data oriented approach
         // start with all the global state required
         // then render appropriately
+
+        // begin datetime stamp
+        db.now = Date.now();
+        console.log(db.now);
+
+        // player list
+        db.players = [];
+
+        // games list
+        db.games = [];
     }
 }
 // scene
