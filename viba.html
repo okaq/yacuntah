@@ -34,6 +34,8 @@ var g = {
         font.init();
         sce.init();
         db.init();
+        play.init();
+        ux.init();
 
         // render
         sce.render();
@@ -53,6 +55,12 @@ var g = {
         if (g.tick >= 8) {
             window.clearInterval(g.id);
         }
+    }
+}
+// input
+var ux = {
+    "init": function() {
+        // handle ui state
     }
 }
 // play
