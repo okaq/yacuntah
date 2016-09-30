@@ -28,15 +28,10 @@ var g = {
     "init": function() {
         var t0 = window.performance.now();
         console.log("viba starting...");
-        
-        // init
-        dom.init();
-        font.init();
-        sce.init();
-        db.init();
-        play.init();
-        ux.init();
-        net.init();
+
+        // subsystems
+        g.subs = [dom,font,sce,db,ux,net,play];
+        g.subs.forEach(function(el){el.init();});
 
         // render
         sce.render();
@@ -62,12 +57,21 @@ var g = {
 var net = {
     "init": function() {
         // manage websocket and xnr conns
+        console.log("establishing net server con");
+
+        // async get timestamp
+        // create string local + server time
+        // and hash to create unique id
+        // then store locally and on server
+        // can send and receive within message headers
+
     }
 }
 // input
 var ux = {
     "init": function() {
         // handle ui state
+        console.log("adding ui handlers");
     }
 }
 // play
@@ -75,6 +79,7 @@ var play = {
     "init": function() {
         // a single round of play
         // manage turns, scores, wins
+        console.log("begin play");
     }
 }
 // data
@@ -83,6 +88,7 @@ var db = {
         // data oriented approach
         // start with all the global state required
         // then render appropriately
+        console.log("initializing data store");
 
         // begin datetime stamp
         db.now = Date.now();
@@ -100,6 +106,7 @@ var db = {
 // scene
 var sce = {
     "init": function() {
+        console.log("creating scene maps");
         // globals
         sce.w = 1920;
         sce.h = 1080;
