@@ -56,7 +56,7 @@ var g = {
 // network
 var net = {
     "init": function() {
-        // manage websocket and xnr conns
+        // manage websocket and xhr conns
         console.log("establishing net server con");
 
         // async get timestamp
@@ -64,6 +64,11 @@ var net = {
         // and hash to create unique id
         // then store locally and on server
         // can send and receive within message headers
+
+        // url map
+        // maintain same-origin policy via headers
+        net.urls = {};
+        net.urls["a"] = "http://localhost:8080/a";
 
     }
 }

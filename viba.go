@@ -39,11 +39,19 @@ func AnkhHandler(w http.ResponseWriter, r *http.Request) {
     w.Write(b0)
 }
 
+func BetHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+    // stats page
+    // get query string and parse id, r.URL
+    // player state is a collection of structs
+}
+
 func main() {
     fmt.Println("starting viba web server on http://localhost:8080");
     ID = 2
     http.HandleFunc("/", VibaHandler)
     http.HandleFunc("/json", JsonHandler)
     http.HandleFunc("/a", AnkhHandler)
+    http.HandleFunc("/b", BetHandler)
     http.ListenAndServe(":8080", nil)
 }
