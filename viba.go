@@ -44,6 +44,7 @@ func BetHandler(w http.ResponseWriter, r *http.Request) {
     // stats page
     // get query string and parse id, r.URL
     // player state is a collection of structs
+    // distribute N services across M servers
 }
 
 func main() {
