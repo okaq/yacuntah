@@ -74,6 +74,16 @@ var net = {
         // net.conn as sole current open request
         net.conn = new window.XMLHttpRequest();
         // determine minimum universal local storage
+
+        console.log(net.conn, window.sessionStorage);
+    },
+    "error": function(msg) {
+        console.log(msg);
+    },
+    "open": function() {
+    },
+    "res": function() {
+        // response routine
     }
 }
 // input
