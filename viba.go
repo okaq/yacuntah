@@ -33,7 +33,8 @@ func AnkhHandler(w http.ResponseWriter, r *http.Request) {
     // atomic int64 counter for user ids
     // server is id:0, admin is id:1, player aq is id:2
     new_id := atomic.AddUint64(&ID, 1)
-    w.Header().Set("Content-Type", "application/json")
+    // w.Header().Set("Content-Type", "application/json")
+    w.Header().Set("Content-Type", "plain/text")
     s0 := strconv.FormatUint(new_id, 10)
     b0 := []byte(s0)
     w.Write(b0)
