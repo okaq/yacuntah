@@ -46,6 +46,11 @@ func BetHandler(w http.ResponseWriter, r *http.Request) {
     // get query string and parse id, r.URL
     // player state is a collection of structs
     // distribute N services across M servers
+    num_ids := atomic.LoadUint64(&ID)
+    w.Header().Set("Content-Type", "plain/text")
+    s0 := strconv.FormatUint(num_ids, 10)
+    b0 := []byte(s0)
+    w.Write(b0)
 }
 
 func main() {
