@@ -19,6 +19,13 @@ var (
     ID uint64 // uinque id generator
 )
 
+func Logger() {
+    // run in separate goroutine
+    // keep a file for writing open
+    // set a timer to fire once every minute
+    // sync write global data with data stamp
+}
+
 func VibaHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
     http.ServeFile(w, r, INDEX)
