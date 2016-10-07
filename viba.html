@@ -38,6 +38,9 @@ var g = {
 
         // loop
         g.loop();
+
+        // noto
+        noto.test();
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
@@ -51,6 +54,12 @@ var g = {
         if (g.tick >= 8) {
             window.clearInterval(g.id);
         }
+    }
+}
+// noto
+var noto = {
+    "test": function() {
+        // noto font unicode random test
     }
 }
 // network
