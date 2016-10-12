@@ -39,8 +39,25 @@ var g = {
 }
 // noto
 var noto = {
+    "init": function() {
+        noto.test();
+        // async download noto font
+        // render upon callback
+    },
     "test": function() {
         // noto font unicode random test
+        noto.s = [1920,1080,0,0];
+        noto.t = dom.canvas(noto.s);
+        dom.add(noto.t);
+        noto.t.can.addEventListener("click", noto.click, false);
+        noto.bkgd();
+    },
+    "bkgd": function() {
+        noto.t.con.fillStyle = rgba.rand();
+        noto.t.con.fillRect(0, 0, noto.t.can.width, noto.t.can.height);
+    },
+    "click": function(e) {
+        console.log(e);
     }
 }
 
