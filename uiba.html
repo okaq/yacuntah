@@ -45,7 +45,8 @@ var g = {
 var noto = {
     "init": function() {
         // null sign
-        noto.n = "ф";
+        // noto.n = "ф";
+        noto.n = '\u{2205}';
 
         noto.test();
         // async download noto font
@@ -60,7 +61,7 @@ var noto = {
     },
     "active": function(e) {
         console.log(e);
-        
+        noto.draw();
     },
     "test": function() {
         // noto font unicode random test
@@ -76,6 +77,11 @@ var noto = {
     },
     "click": function(e) {
         console.log(e);
+    },
+    "draw": function() {
+        noto.t.con.font = "128px Noto Sans";
+        noto.t.con.fillStyle = rgba.rand();
+        noto.t.con.fillText(noto.n, 128, 128);
     }
 }
 
