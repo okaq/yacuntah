@@ -50,6 +50,17 @@ var noto = {
         noto.test();
         // async download noto font
         // render upon callback
+
+        var config0 = {};
+        var families0 = {"families":["Noto Sans"]};
+        config0["google"] = families0;
+        config0["active"] = noto.active;
+        WebFont.load(config0);
+        // WebFont.addEventListener("active", noto.active, false);
+    },
+    "active": function(e) {
+        console.log(e);
+        
     },
     "test": function() {
         // noto font unicode random test
