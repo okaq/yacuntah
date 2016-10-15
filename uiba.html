@@ -61,7 +61,9 @@ var noto = {
     },
     "active": function(e) {
         console.log(e);
-        noto.draw();
+        // noto.draw();
+        // callback: render glyph and sample
+        noto.reno();
     },
     "test": function() {
         // noto font unicode random test
@@ -101,6 +103,19 @@ var noto = {
         // set textBaseline top
         noto.u.con.textBaseline = "hanging";
         noto.u.con.fillText(noto.n, 42, 8);
+    },
+    "reno": function() {
+        noto.v.con.font = "768px Noto Sans";
+        noto.v.con.fillStyle = rgba.rand();
+        // set textBaseline top
+        noto.v.con.textBaseline = "hanging";
+        noto.v.con.fillText(noto.n, 42, 8);
+
+        noto.samp();
+    },
+    "samp": function() {
+        noto.d = noto.v.con.createImageData(noto.v.can.width, noto.v.can.height);
+        console.log(noto.d);
     }
 }
 
