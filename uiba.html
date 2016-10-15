@@ -79,8 +79,10 @@ var noto = {
         console.log(e);
     },
     "draw": function() {
-        noto.t.con.font = "128px Noto Sans";
+        noto.t.con.font = "512px Noto Sans";
         noto.t.con.fillStyle = rgba.rand();
+        // set textBaseline top
+        noto.t.con.textBaseline = "hanging";
         noto.t.con.fillText(noto.n, 128, 128);
     }
 }
