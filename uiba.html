@@ -65,10 +65,18 @@ var noto = {
     },
     "test": function() {
         // noto font unicode random test
+        // bkgd
         noto.s = [1920,1080,0,0];
         noto.t = dom.canvas(noto.s);
         dom.add(noto.t);
         noto.t.can.addEventListener("click", noto.click, false);
+        // glyph
+        var w0 = (512+256) >>> 0;
+        var h0 = (512+256) >>> 0;
+        var x0 = ((1920 - w0) / 2) >>> 0;
+        var y0 = ((1080 - h0) / 2) >>> 0;
+        noto.u = [w0,h0,x0,y0];
+        console.log(noto.u);
         noto.bkgd();
     },
     "bkgd": function() {
