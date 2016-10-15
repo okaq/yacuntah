@@ -75,23 +75,32 @@ var noto = {
         var h0 = (512+256) >>> 0;
         var x0 = ((1920 - w0) / 2) >>> 0;
         var y0 = ((1080 - h0) / 2) >>> 0;
-        noto.u = [w0,h0,x0,y0];
-        console.log(noto.u);
+        noto.u = dom.canvas([w0,h0,x0,y0]);
+        // console.log(noto.u);
+        // offscreen
+        noto.v = dom.canvas([w0,h0,x0,y0]);
+        dom.add(noto.u);
+        noto.u.can.addEventListener("click", noto.click, false);
         noto.bkgd();
+        noto.glyph();
     },
     "bkgd": function() {
         noto.t.con.fillStyle = rgba.rand();
         noto.t.con.fillRect(0, 0, noto.t.can.width, noto.t.can.height);
     },
+    "glyph": function() {
+        noto.u.con.fillStyle = rgba.rand();
+        noto.u.con.fillRect(0, 0, noto.u.can.width, noto.u.can.height);
+    },
     "click": function(e) {
         console.log(e);
     },
     "draw": function() {
-        noto.t.con.font = "512px Noto Sans";
-        noto.t.con.fillStyle = rgba.rand();
+        noto.u.con.font = "768px Noto Sans";
+        noto.u.con.fillStyle = rgba.rand();
         // set textBaseline top
-        noto.t.con.textBaseline = "hanging";
-        noto.t.con.fillText(noto.n, 128, 128);
+        noto.u.con.textBaseline = "hanging";
+        noto.u.con.fillText(noto.n, 42, 8);
     }
 }
 
