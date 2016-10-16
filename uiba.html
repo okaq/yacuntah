@@ -105,6 +105,7 @@ var noto = {
         noto.u.con.fillText(noto.n, 42, 8);
     },
     "reno": function() {
+        // offscreen render
         noto.v.con.font = "768px Noto Sans";
         noto.v.con.fillStyle = rgba.rand();
         // set textBaseline top
@@ -116,6 +117,9 @@ var noto = {
     "samp": function() {
         noto.d = noto.v.con.createImageData(noto.v.can.width, noto.v.can.height);
         console.log(noto.d);
+        // poll each kernel
+        // decide if it meets a threshold value
+        // store bool in sample bitmap
     }
 }
 
