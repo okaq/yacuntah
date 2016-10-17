@@ -124,6 +124,10 @@ var noto = {
         // kernel size
         kw0 = 16;
         kh0 = 16;
+        bw0 = (768 / 16) >>> 0;
+        bh0 = (768 / 16) >>> 0;
+        bt0 = (bw0 * bh0) >>> 0;
+        console.log(kw0, kh0, bw0, bh0, bt0);
 
         // facile method for converting between kernel block indicies
         // and the corresponding subset of color data values
