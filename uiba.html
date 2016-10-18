@@ -113,6 +113,8 @@ var noto = {
         noto.v.con.fillText(noto.n, 42, 8);
 
         noto.samp();
+
+        noto.grid();
     },
     "samp": function() {
         noto.d = noto.v.con.createImageData(noto.v.can.width, noto.v.can.height);
@@ -156,6 +158,14 @@ var noto = {
             noto.x.r[i] = [bw0,bh0,bx1,by1];
             noto.x.c[i] = dom.canvas(noto.x.r[i]);
             noto.x.d[i] = rgba.rand();
+        }
+    },
+    "grid": function() {
+        // test blocks add and render
+        for (var i = 0; i < noto.x.c.length; i++) {
+            dom.add(noto.x.c[i]);
+            noto.x.c[i].con.fillStyle = noto.x.d[i];
+            noto.x.c[i].con.fillRect(0,0,noto.x.c[i].can.width,noto.x.c[i].can.height);
         }
     }
 }
