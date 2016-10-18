@@ -121,6 +121,9 @@ var noto = {
         // decide if it meets a threshold value
         // store bool in sample bitmap
 
+        // image data to write to
+        noto.e = noto.u.con.createImageData(noto.u.can.width, noto.u.can.height);
+
         // kernel size
         kw0 = 16;
         kh0 = 16;
@@ -132,6 +135,13 @@ var noto = {
         // facile method for converting between kernel block indicies
         // and the corresponding subset of color data values
         // subs(ki0, kw0, kh0)
+
+        // loop over blocks
+        for (var i = 0; i < bt0; i++) {
+            var bx0 = i % bw0;
+            var by0 = (i / bw0) >>> 0;
+            // set a NxN block to rgba
+        }
     }
 }
 
