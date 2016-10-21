@@ -13,7 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script type="text/javascript">
             // ok
-        console.log("okaq gira yacunta iuiba noto ok!");
+        console.log("okaq gira yacunta uiba noto ok!");
         // async load
         (function() {
          var a = {
@@ -130,12 +130,17 @@ var noto = {
         // noto.x.c = [];
 
         // kernel size
-        kw0 = 16;
-        kh0 = 16;
-        bw0 = (768 / 16) >>> 0;
-        bh0 = (768 / 16) >>> 0;
-        bt0 = (bw0 * bh0) >>> 0;
-        console.log(kw0, kh0, bw0, bh0, bt0);
+        var kw0 = 16;
+        var kh0 = 16;
+        var bw0 = (768 / 16) >>> 0;
+        var bh0 = (768 / 16) >>> 0;
+        var bt0 = (kw0 * kh0) >>> 0;
+        var w0 = (512+256) >>> 0;
+        var h0 = (512+256) >>> 0;
+        var x0 = ((1920 - w0) / 2) >>> 0;
+        var y0 = ((1080 - h0) / 2) >>> 0;
+ 
+        console.log(kw0, kh0, bw0, bh0, bt0, w0, h0, x0, y0);
 
         // facile method for converting between kernel block indicies
         // and the corresponding subset of color data values
@@ -149,12 +154,14 @@ var noto = {
 
         // loop over blocks
         for (var i = 0; i < bt0; i++) {
-            var bx0 = i % bw0;
-            var by0 = (i / bw0) >>> 0;
+            var bx0 = i % kw0;
+            var by0 = (i / kw0) >>> 0;
             // set a NxN block to rgba
             // index into the image data array
             var bx1 = (bx0 * bw0) >>> 0;
             var by1 = (by0 * bh0) >>> 0;
+            bx1 = (bx1 + x0) >>> 0;
+            by1 = (by1 + y0) >>> 0;
             noto.x.r[i] = [bw0,bh0,bx1,by1];
             noto.x.c[i] = dom.canvas(noto.x.r[i]);
             noto.x.d[i] = rgba.rand();
