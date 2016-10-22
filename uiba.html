@@ -166,6 +166,15 @@ var noto = {
             noto.x.c[i] = dom.canvas(noto.x.r[i]);
             noto.x.d[i] = rgba.rand();
         }
+
+        // sample and fill data from font render pane
+        for (var i = 0; i < bt0; i++) {
+            // index, kw0, kh0
+            // get sample subset indicies
+            var sub0 = noto.subs(i, kw0, kh0);
+            // threshold subset at midpoint 128
+            // greyscale image only requires first red channel
+        }
     },
     "grid": function() {
         // test blocks add and render
