@@ -174,7 +174,25 @@ var noto = {
             var sub0 = noto.subs(i, kw0, kh0);
             // threshold subset at midpoint 128
             // greyscale image only requires first red channel
+            var th0 = noto.thresh(sub0);
         }
+    },
+    "subs": function(d0, i0, w0, h0) {
+        var r0 = [];
+        // start index in rgba data array
+        var x0 = i0 % w0;
+        var y0 = (i0 / w0) >>> 0;
+        var i1 = (y0 * dw * 4) + (x0 * 4) >>> 0;
+        for (var y1 = 0; y1 < h0; y1++) {
+            for (var x1 = 0; x1 < w0; x1++) {
+                
+            }
+        }
+        return r0;
+    },
+    "thresh": function(s0) {
+        // over under for rgba count
+
     },
     "grid": function() {
         // test blocks add and render
