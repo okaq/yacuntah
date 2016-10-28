@@ -179,13 +179,14 @@ var noto = {
             noto.x.d[i] = rgba.mono(th0);
         }
         // render sampled data image set
+        noto.grid();
     },
     "subs": function(d0, i0, w0, h0) {
         var r0 = [];
         // start index in rgba data array
         var x0 = i0 % w0;
         var y0 = (i0 / w0) >>> 0;
-        var i1 = (y0 * dw * 4) + (x0 * 4) >>> 0;
+        // var i1 = (y0 * dw * 4) + (x0 * 4) >>> 0;
         for (var y1 = 0; y1 < h0; y1++) {
             for (var x1 = 0; x1 < w0; x1++) {
                 // subsample threshold
@@ -199,8 +200,8 @@ var noto = {
     "thresh": function(s0) {
         // over under for rgba count
         // first pixel sub sample
-        return s0[0];
-
+        // return s0[0];
+        return rgba.rb();
     },
     "grid": function() {
         // test blocks add and render
