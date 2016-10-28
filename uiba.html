@@ -85,6 +85,7 @@ var noto = {
         noto.u.can.addEventListener("click", noto.click, false);
         noto.bkgd();
         noto.glyph();
+        noto.draw();
     },
     "bkgd": function() {
         noto.t.con.fillStyle = rgba.rand();
@@ -102,7 +103,7 @@ var noto = {
         noto.u.con.fillStyle = rgba.rand();
         // set textBaseline top
         noto.u.con.textBaseline = "hanging";
-        noto.u.con.fillText(noto.n, 42, 8);
+        noto.u.con.fillText(noto.n, 42, 80);
     },
     "reno": function() {
         // offscreen render
@@ -110,11 +111,11 @@ var noto = {
         noto.v.con.fillStyle = rgba.rand();
         // set textBaseline top
         noto.v.con.textBaseline = "hanging";
-        noto.v.con.fillText(noto.n, 42, 8);
+        noto.v.con.fillText(noto.n, 42, 80);
 
         noto.samp();
 
-        noto.grid();
+        // noto.grid();
     },
     "samp": function() {
         noto.d = noto.v.con.createImageData(noto.v.can.width, noto.v.can.height);
