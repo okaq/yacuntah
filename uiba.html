@@ -35,7 +35,9 @@ var g = {
         g.subs.forEach(function(el){el.init();});
 
         // async load
-
+        // noto.render();
+        // click event to enter
+        // or 1fps pre-computed frame based anim
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
@@ -140,6 +142,9 @@ var noto = {
         var h0 = (512+256) >>> 0;
         var x0 = ((1920 - w0) / 2) >>> 0;
         var y0 = ((1080 - h0) / 2) >>> 0;
+        // refactor as class level exposed data
+        // include image data size and stride dimensions
+
  
         console.log(kw0, kh0, bw0, bh0, bt0, w0, h0, x0, y0);
 
@@ -172,7 +177,7 @@ var noto = {
         for (var i = 0; i < bt0; i++) {
             // index, kw0, kh0
             // get sample subset indicies
-            var sub0 = noto.subs(i, kw0, kh0);
+            var sub0 = noto.subs(i, kw0, kh0, w0, h0);
             // threshold subset at midpoint 128
             // greyscale image only requires first red channel
             var th0 = noto.thresh(sub0);
@@ -182,12 +187,24 @@ var noto = {
         // render sampled data image set
         noto.grid();
     },
-    "subs": function(d0, i0, w0, h0) {
+    "subs": function(i0, kw0, kh0, w0, h0) {
+        // instead of passing in the raw image data
+        // just pass in image width height
+        // kernel parameters and index
+        // method assumes rgba image data
         var r0 = [];
         // start index in rgba data array
+        var nx = (w0 / kw0) >>> 0;
+        var ny = (h0 / kh0) >>> 0;
         var x0 = i0 % w0;
         var y0 = (i0 / w0) >>> 0;
+        var x1 = (x0 * kw0) >>> 0;
+        var y1 = (y0 * kh0) >>> 0;
+        // first index into data
+        var i1 = 0;
+        return i1;
         // var i1 = (y0 * dw * 4) + (x0 * 4) >>> 0;
+        /*
         for (var y1 = 0; y1 < h0; y1++) {
             for (var x1 = 0; x1 < w0; x1++) {
                 // subsample threshold
@@ -196,7 +213,8 @@ var noto = {
                 // accumulate rows of indicies in buffer
             }
         }
-        return r0;
+        */
+        // return r0;
     },
     "thresh": function(s0) {
         // over under for rgba count
