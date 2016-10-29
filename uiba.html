@@ -133,6 +133,7 @@ var noto = {
         // noto.x.c = [];
 
         // kernel size
+        /*
         var kw0 = 16;
         var kh0 = 16;
         var bw0 = (768 / 16) >>> 0;
@@ -142,11 +143,24 @@ var noto = {
         var h0 = (512+256) >>> 0;
         var x0 = ((1920 - w0) / 2) >>> 0;
         var y0 = ((1080 - h0) / 2) >>> 0;
+        */
         // refactor as class level exposed data
         // include image data size and stride dimensions
-
+        // dedicated geometry methods expose calculations
+        noto.k = {};
+        noto.k.w = 768;
+        noto.k.h = 768;
+        noto.k.kw = 16;
+        noto.k.kh = 16;
+        noto.k.kx = (noto.k.w / noto.k.kw) >>> 0;
+        noto.k.ky = (noto.k.h / noto.k.kh) >>> 0;
+        noto.k.kt = (noto.k.kx * noto.k.ky) >>> 0;
+        // stride in image data
+        noto.k.sx = (noto.k.w * 4) >>> 0;
+        noto.k.sk = (noto.k.sx * noto.k.kh) >>> 0;
  
-        console.log(kw0, kh0, bw0, bh0, bt0, w0, h0, x0, y0);
+        console.log(noto.k);
+        // console.log(kw0, kh0, bw0, bh0, bt0, w0, h0, x0, y0);
 
         // facile method for converting between kernel block indicies
         // and the corresponding subset of color data values
