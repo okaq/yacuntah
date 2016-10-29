@@ -172,6 +172,13 @@ var noto = {
         noto.x.c = [];
         noto.x.d = [];
 
+        // refactor into separate methods
+        // one to instantiate the sample grid
+        // and another to sample the glyph pixel data
+        // methods for add / remove grid
+        // method to obtain subset of pixel dat indicies
+        // method for threshold pass determination
+
         // loop over blocks
         for (var i = 0; i < bt0; i++) {
             var bx0 = i % kw0;
