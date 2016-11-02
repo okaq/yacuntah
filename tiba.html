@@ -47,6 +47,12 @@ var noto = {
         // gen id
         // establish conn
         // complete id round trip
+        noto.fluid = noto.ruid();
+        console.log(noto.fluid);
+    },
+    "ruid": function() {
+        // return a max rand
+        return (Number.MAX_SAFE_INTEGER * Math.random());
     }
 }
 // dom
