@@ -32,13 +32,19 @@ var g = {
         var t0 = window.performance.now();
         console.log("tiba started...");
 
+        // brain
+        g.brain();
 
         // subsystems
-        g.subs = [dom,noto];
+        g.subs = [dom,noto,xhr];
         g.subs.forEach(function(el){el.init();});
         
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    },
+    "brain": function() {
+        // initialize central observer / manager for all game events
+        // the illusion of long processes, optimization diluted for effect
     }
 }
 // noto
@@ -53,6 +59,16 @@ var noto = {
     "ruid": function() {
         // return a max rand
         return (Number.MAX_SAFE_INTEGER * Math.random());
+    }
+}
+// net conn
+var xhr = {
+    "init": function() {
+        // open conn and check send ruid
+        // recieve tuid from server
+        // timestamp + random float
+
+        // change state and render all the stages
     }
 }
 // dom
