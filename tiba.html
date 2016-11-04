@@ -53,6 +53,10 @@ var g = {
         g.b = {};
         // event map to function calls
         g.e = {};
+        // for each event unlock event history counter
+        g.h = []; 
+        // game state
+        g.s = {};
     }
 }
 // noto
@@ -77,6 +81,18 @@ var xhr = {
         // timestamp + random float
 
         // change state and render all the stages
+
+        // url list
+        xhr.url = [];
+
+        // conn
+        xhr.c = new XMLHttpRequest();
+    },
+    "open": function() {
+        // test conn with server
+    },
+    "err": function(msg) {
+        console.log(msg);
     }
 }
 // dom
