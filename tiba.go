@@ -3,12 +3,36 @@ package main
 
 import (
     "fmt"
+    "math/rand"
     "net/http"
+    "time"
 )
 
 const (
     INDEX = "tiba.html"
 )
+
+var (
+    Rng *RNG
+)
+
+type RNG struct {
+    seed int64
+    source rand.Source
+    R *rand.Rand
+}
+
+func NewRNG() *RNG {
+    r0 := RNG{}
+    r0.seed = time.Now().UnixNano()
+    r0.source = rand.NewSource(r0.seed)
+    r0.R = rand.New(r0.source)
+    return &r0
+}
+
+func (r *RNG) Float() float32 {
+    return r.R.Float32()
+}
 
 func TibaHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
@@ -20,9 +44,17 @@ func UserHandler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("ready one"))
 }
 
+func DataHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+    // write a single random float32
+}
+
 func main() {
     fmt.Println("starting tiba web server on http://localhost:8080")
+    Rng = NewRNG()
+    fmt.Println(Rng.Float())
     http.HandleFunc("/", TibaHandler)
     http.HandleFunc("/u", UserHandler)
+    http.HandleFunc("/d", DataHandler)
     http.ListenAndServe(":8080", nil)
 }

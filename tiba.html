@@ -82,8 +82,9 @@ var xhr = {
 
         // change state and render all the stages
 
-        // url list
-        xhr.url = ["http://localhost:8080/c"];
+        // url list (map)
+        xhr.url = ["http://localhost:8080/c",
+        "http://localhost:8080/d"];
 
         // conn
         xhr.c = new XMLHttpRequest();
@@ -91,6 +92,7 @@ var xhr = {
     },
     "open": function() {
         // test conn with server
+        xhr.c.open("GET", xhr.url[0], true);
     },
     "err": function(msg) {
         console.log(msg);
