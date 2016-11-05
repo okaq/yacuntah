@@ -83,10 +83,11 @@ var xhr = {
         // change state and render all the stages
 
         // url list
-        xhr.url = [];
+        xhr.url = ["http://localhost:8080/c"];
 
         // conn
         xhr.c = new XMLHttpRequest();
+        console.log(xhr.c);
     },
     "open": function() {
         // test conn with server
