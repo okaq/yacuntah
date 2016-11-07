@@ -100,6 +100,13 @@ var xhr = {
     },
     "err": function(msg) {
         console.log(msg);
+    },
+    "round": function() {
+        // uid round trip
+        // post client side rand data
+        // server gets unix nano time stamp
+        // append string to writer and flush to output stream
+        // text/plain byte stream
     }
 }
 // dom
