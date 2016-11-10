@@ -108,6 +108,10 @@ var xhr = {
         // test conn with server
         xhr.c.open("GET", xhr.url[0], true);
     },
+    "wire": function() {
+        // pack data and send the request
+        xhr.c.send();
+    },
     "err": function(msg) {
         console.log(msg);
     },
