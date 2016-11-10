@@ -95,6 +95,14 @@ var xhr = {
         // conn
         xhr.c = new XMLHttpRequest();
         console.log(xhr.c);
+
+        xhr.attach();
+    },
+    "attach": function() {
+        xhr.c.addEventListener("load", xhr.handler);
+    },
+    "handler": function() {
+        // log response
     },
     "open": function() {
         // test conn with server
