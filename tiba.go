@@ -5,6 +5,7 @@ import (
     "fmt"
     "math/rand"
     "net/http"
+    "strconv"
     "time"
 )
 
@@ -30,7 +31,7 @@ func NewRNG() *RNG {
     return &r0
 }
 
-func (r *RNG) Float() float32 {
+func (r *RNG) Next() float32 {
     return r.R.Float32()
 }
 
@@ -47,12 +48,17 @@ func UserHandler(w http.ResponseWriter, r *http.Request) {
 func DataHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
     // write a single random float32
+    f0 := Rng.Next()
+    f1 := float64(f0)
+    s0 := strconv.FormatFloat(f1, 'g', -1, 32)
+    b0 := []byte(s0)
+    w.Write(b0)
 }
 
 func main() {
     fmt.Println("starting tiba web server on http://localhost:8080")
     Rng = NewRNG()
-    fmt.Println(Rng.Float())
+    fmt.Println(Rng.Next())
     http.HandleFunc("/", TibaHandler)
     http.HandleFunc("/u", UserHandler)
     http.HandleFunc("/d", DataHandler)
