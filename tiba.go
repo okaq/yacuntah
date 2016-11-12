@@ -53,6 +53,7 @@ func DataHandler(w http.ResponseWriter, r *http.Request) {
     s0 := strconv.FormatFloat(f1, 'g', -1, 32)
     b0 := []byte(s0)
     w.Write(b0)
+    // w.Write([]byte(string(Rng.Next())))
 }
 
 func main() {
