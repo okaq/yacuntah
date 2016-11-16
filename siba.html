@@ -32,8 +32,17 @@ var g = {
         var t0 = window.performance.now();
         console.log("tiba started...");
 
+        // brain
+        g.brain();
+
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    },
+    "brain": function() {
+        // events master list
+        g.e = {};
+
+        // start quid round trip
     }
 }
 // dom
