@@ -52,6 +52,10 @@ var g = {
         // return in response body json
         var gd = Date.now();
         console.log(gd);
+        var gr = (Number.MAX_SAFE_INTEGER * Math.random()) >>> 0;
+        console.log(gr);
+        g.q = {'time':gd,'id':gr};
+        console.log(g.q);
     }
 }
 // dom
