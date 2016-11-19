@@ -2,6 +2,7 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "net/http"
 )
@@ -18,9 +19,22 @@ func SibaHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, INDEX)
 }
 
+type Quid struct {
+    Time float32
+    Id float32
+}
+
 func QuidHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
-    w.Write([]byte("ok quid!"));
+    // w.Write([]byte("ok quid!"));
+    dec := json.NewDecoder(r.Body)
+    var q Quid
+    err := dec.Decode(&q)
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Println(q)
+    defer r.Body.Close()
 }
 
 func main() {

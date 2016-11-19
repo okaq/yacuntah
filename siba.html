@@ -54,7 +54,7 @@ var g = {
         console.log(gd);
         var gr = (Number.MAX_SAFE_INTEGER * Math.random()) >>> 0;
         console.log(gr);
-        g.q = {'time':gd,'id':gr};
+        g.q = {'Time':gd,'Id':gr};
         console.log(g.q);
 
         xhr.send();
@@ -69,7 +69,9 @@ var xhr = {
         xhr.c = new XMLHttpRequest();
         xhr.c.addEventListener("load", xhr.load);
         xhr.c.open("POST", xhr.url[0]);
-        xhr.c.send(g.q);
+        xhr.c.responseType = "json";
+        xhr.c.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.c.send(JSON.stringify(g.q));
     },
     "load": function() {
         console.log(this.responseText);
