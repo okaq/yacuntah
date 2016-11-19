@@ -20,6 +20,7 @@ func SibaHandler(w http.ResponseWriter, r *http.Request) {
 
 func QuidHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
+    w.Write([]byte("ok quid!"));
 }
 
 func main() {

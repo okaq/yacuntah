@@ -56,6 +56,23 @@ var g = {
         console.log(gr);
         g.q = {'time':gd,'id':gr};
         console.log(g.q);
+
+        xhr.send();
+    }
+}
+// xhr
+var xhr = {
+    "send": function() {
+        // url list
+        xhr.url = ["http://localhost:8080/a"];
+        // conn
+        xhr.c = new XMLHttpRequest();
+        xhr.c.addEventListener("load", xhr.load);
+        xhr.c.open("POST", xhr.url[0]);
+        xhr.c.send(g.q);
+    },
+    "load": function() {
+        console.log(this.responseText);
     }
 }
 // dom
