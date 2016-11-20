@@ -33,7 +33,8 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     if err != nil {
         fmt.Println(err)
     }
-    fmt.Println(q)
+    // fmt.Println(q)
+    fmt.Printf("Time: %f, Id: %f.\n", q.Time, q.Id)
     defer r.Body.Close()
 }
 
