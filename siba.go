@@ -26,12 +26,19 @@ type Quid struct {
     Id float64
     IdKey string
     // server comps
+    Now int64
+    NowKey string
+    Lid float64
+    LidKey string
+    HashKey string
 }
 
 func QuidHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
     // w.Write([]byte("ok quid!"));
     dec := json.NewDecoder(r.Body)
+    defer r.Body.Close()
+    // decode into new Quid
     var q Quid
     err := dec.Decode(&q)
     if err != nil {
@@ -42,7 +49,7 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     q.TimeKey = strconv.FormatFloat(q.Time, 'f', -1, 64)
     q.IdKey = strconv.FormatFloat(q.Id, 'f', -1, 64)
     fmt.Printf("Time: %s, Id: %s\n", q.TimeKey, q.IdKey)
-    defer r.Body.Close()
+    // generate server side parts
 }
 
 func main() {
