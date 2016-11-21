@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "net/http"
+    "strconv"
 )
 
 const (
@@ -20,8 +21,11 @@ func SibaHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 type Quid struct {
-    Time float32
-    Id float32
+    Time float64
+    TimeKey string
+    Id float64
+    IdKey string
+    // server comps
 }
 
 func QuidHandler(w http.ResponseWriter, r *http.Request) {
@@ -35,6 +39,9 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     }
     // fmt.Println(q)
     fmt.Printf("Time: %f, Id: %f.\n", q.Time, q.Id)
+    q.TimeKey = strconv.FormatFloat(q.Time, 'f', -1, 64)
+    q.IdKey = strconv.FormatFloat(q.Id, 'f', -1, 64)
+    fmt.Printf("Time: %s, Id: %s\n", q.TimeKey, q.IdKey)
     defer r.Body.Close()
 }
 
