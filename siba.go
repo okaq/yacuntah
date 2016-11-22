@@ -3,6 +3,7 @@ package main
 
 import (
     "crypto/md5"
+    "encoding/ascii85"
     "encoding/json"
     "fmt"
     "math/rand"
@@ -64,6 +65,12 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     q.HashSum = md5.Sum([]byte(q.Hash))
     q.HashKey = string(q.HashSum[:])
     fmt.Println(q)
+    // ascii representation
+    b0 := make([]byte, ascii85.MaxEncodedLen(len(q.HashSum[:])))
+    n0 := ascii85.Encode(b0, q.HashSum[:])
+    fmt.Println(b0, n0)
+    s0 := string(b0)
+    fmt.Println(s0)
 }
 
 func main() {
