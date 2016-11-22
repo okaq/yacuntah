@@ -4,8 +4,10 @@ package main
 import (
     "encoding/json"
     "fmt"
+    "math/rand"
     "net/http"
     "strconv"
+    "time"
 )
 
 const (
@@ -50,6 +52,12 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     q.IdKey = strconv.FormatFloat(q.Id, 'f', -1, 64)
     fmt.Printf("Time: %s, Id: %s\n", q.TimeKey, q.IdKey)
     // generate server side parts
+    q.Now = time.Now().UnixNano()
+    q.NowKey = strconv.FormatInt(q.Now, 10)
+    // rand default source
+    q.Lid = rand.Float64()
+    q.LidKey = strconv.FormatFloat(q.Lid, 'f', -1, 64)
+    fmt.Println(q)
 }
 
 func main() {
