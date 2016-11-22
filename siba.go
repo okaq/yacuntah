@@ -2,6 +2,7 @@
 package main
 
 import (
+    "crypto/md5"
     "encoding/json"
     "fmt"
     "math/rand"
@@ -32,6 +33,8 @@ type Quid struct {
     NowKey string
     Lid float64
     LidKey string
+    Hash string
+    HashSum [md5.Size]byte
     HashKey string
 }
 
@@ -57,6 +60,9 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     // rand default source
     q.Lid = rand.Float64()
     q.LidKey = strconv.FormatFloat(q.Lid, 'f', -1, 64)
+    q.Hash = fmt.Sprintf("%s:%s:%s:%s",q.TimeKey,q.IdKey,q.NowKey,q.LidKey)
+    q.HashSum = md5.Sum([]byte(q.Hash))
+    q.HashKey = string(q.HashSum[:])
     fmt.Println(q)
 }
 
