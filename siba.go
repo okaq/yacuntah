@@ -71,6 +71,13 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(b0, n0)
     s0 := string(b0)
     fmt.Println(s0)
+    w.Header().Set("Content-Type", "text/plain")
+    // w.Write([]byte(s0))
+    w.Write(b0)
+    // pipeline calls for each stage
+    // fan out work to available workers
+    // cache id keys in map[string]Peer
+    // golang maps not concurrency safe!
 }
 
 func main() {

@@ -69,7 +69,8 @@ var xhr = {
         xhr.c = new XMLHttpRequest();
         xhr.c.addEventListener("load", xhr.load);
         xhr.c.open("POST", xhr.url[0]);
-        xhr.c.responseType = "json";
+        // xhr.c.responseType = "json";
+        xhr.c.responseType = "text";
         xhr.c.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.c.send(JSON.stringify(g.q));
     },
