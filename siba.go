@@ -19,6 +19,15 @@ const (
 // cache list of peer quids
 // maintain broker for any peer net
 
+type Peer struct {
+    Q Quid
+}
+
+type Cache struct {
+    sync.RWMutex
+    Peers map[string]*Peer
+}
+
 func SibaHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
     http.ServeFile(w, r, INDEX)
