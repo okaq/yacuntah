@@ -9,6 +9,7 @@ import (
     "math/rand"
     "net/http"
     "strconv"
+    "sync"
     "time"
 )
 
@@ -19,13 +20,29 @@ const (
 // cache list of peer quids
 // maintain broker for any peer net
 
+var (
+    C *Cache
+)
+
 type Peer struct {
     Q Quid
+}
+
+func NewPeer(q Quid) *Peer {
+    p := Peer{}
+    p.Q = q
+    return &p
 }
 
 type Cache struct {
     sync.RWMutex
     Peers map[string]*Peer
+}
+
+func NewCache() *Cache {
+    c := Cache{}
+    c.Peers = make(map[string]*Peer)
+    return &c
 }
 
 func SibaHandler(w http.ResponseWriter, r *http.Request) {
@@ -87,10 +104,17 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     // fan out work to available workers
     // cache id keys in map[string]Peer
     // golang maps not concurrency safe!
+    C.Lock()
+    C.Peers[s0] = NewPeer(q)
+    C.Unlock()
+    C.RLock()
+    fmt.Println(C)
+    C.RUnlock()
 }
 
 func main() {
     fmt.Println("starting siba web server on localhost:8080")
+    C = NewCache()
     http.HandleFunc("/", SibaHandler)
     http.HandleFunc("/a", QuidHandler)
     http.ListenAndServe(":8080", nil)
