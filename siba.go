@@ -109,6 +109,7 @@ func QuidHandler(w http.ResponseWriter, r *http.Request) {
     C.Unlock()
     C.RLock()
     fmt.Println(C)
+    fmt.Printf("Number of Peers: %d\n", len(C.Peers))
     C.RUnlock()
 }
 
