@@ -39,6 +39,13 @@ type Cache struct {
     Peers map[string]*Peer
 }
 
+type Broker struct {
+    // generates and initiates peer conns
+    // map of the current state of peer network
+    // key is of the form {peer1,peer2}
+    // value is current duration, health
+}
+
 func NewCache() *Cache {
     c := Cache{}
     c.Peers = make(map[string]*Peer)
