@@ -92,14 +92,16 @@ var g = {
 var sce = {
     "init": function() {
         // scene list
-        sce.a = [];
+        sce.a = dom.canvas(lay.a);
+        dom.add(sce.a);
+        // render test
     }
 }
 // layout
 var lay = {
     "init": function() {
         // layout list
-        lay.a = [];
+        lay.a = [1920,1080,0,0];
     }
 }
 // xhr
