@@ -26,6 +26,9 @@ var (
 
 type Peer struct {
     Q Quid
+    // sign hashed token using sha256-hmc
+    // with private server key
+    // append to hash with format hash.key
 }
 
 func NewPeer(q Quid) *Peer {
