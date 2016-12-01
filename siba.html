@@ -35,6 +35,13 @@ var g = {
         // brain
         g.brain();
 
+        // subsystems
+        g.subs = [dom,lay,sce];
+        g.subs.forEach(function(el){el.init();});
+
+        // test
+        // ren.test();
+
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
     },
@@ -94,6 +101,11 @@ var sce = {
         // scene list
         sce.a = dom.canvas(lay.a);
         dom.add(sce.a);
+        sce.b = [];
+        for (var i = 0; i < lay.b.length; i++) {
+            sce.b[i] = dom.canvas(lay.b[i]);
+            dom.add(sce.b[i]);
+        }
         // render test
     }
 }
@@ -113,7 +125,11 @@ var lay = {
         var ny = (1080 / h0) >>> 0;
         var nt = (nx * ny) >>> 0;
         for (var i = 0; i < nt; i++) {
-            lay.b[i] = [];
+            var x0 = i % nx;
+            var y0 = (i / nx) >>> 0;
+            var x1 = (x0 * w0) >>> 0;
+            var y1 = (y0 * h0) >>> 0;
+            lay.b[i] = [w0,h0,x1,y1];
         }
     }
 }
