@@ -102,6 +102,19 @@ var lay = {
     "init": function() {
         // layout list
         lay.a = [1920,1080,0,0];
+        lay.b = [];
+        var w0 = 20;
+        var h0 = 20;
+        var mw = 1;
+        var mh = 1;
+        var w1 = (w0 - (2 * mw)) >>> 0;
+        var h1 = (h0 - (2 * mh)) >>> 0;
+        var nx = (1920 / w0) >>> 0;
+        var ny = (1080 / h0) >>> 0;
+        var nt = (nx * ny) >>> 0;
+        for (var i = 0; i < nt; i++) {
+            lay.b[i] = [];
+        }
     }
 }
 // xhr
