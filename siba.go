@@ -49,6 +49,11 @@ type Broker struct {
     // value is current duration, health
 }
 
+type State struct {
+    // any state changes can be registered server side
+    // schema-less initiative, only map[string]string
+}
+
 func NewCache() *Cache {
     c := Cache{}
     c.Peers = make(map[string]*Peer)
