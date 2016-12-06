@@ -42,6 +42,9 @@ var g = {
         // test
         ren.test();
 
+        // begin
+        g.begin();
+
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
     },
@@ -93,6 +96,10 @@ var g = {
         // construct client uid to send
         // send to server
         // process and store response
+    },
+    "begin": function() {
+        // click anywhere to begin playing game
+        // three mid panes, sides black, center white, black font
     }
 }
 // data
