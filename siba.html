@@ -43,7 +43,7 @@ var g = {
         ren.test();
 
         // begin
-        g.begin();
+        window.setTimeout(g.begin, 2000);
 
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
@@ -100,6 +100,10 @@ var g = {
     "begin": function() {
         // click anywhere to begin playing game
         // three mid panes, sides black, center white, black font
+        sce.remove();
+        g.panes = [[1920,1080,0,0],[640,640,0,220],[640,640,640,220],[640,640,1280,220]];
+        sce.list(g.panes);
+        ren.curr();
     }
 }
 // data
@@ -125,6 +129,22 @@ var sce = {
         // render test
 
         // random sub division of layout rects
+    },
+    "remove": function() {
+        // discard test scenes
+        dom.remove(sce.a);
+        for (var i = 0; i < sce.b.length; i++) {
+            dom.remove(sce.b[i]);
+        }
+    },
+    "list": function(r0) {
+        // return scen list from list of rects
+        // current scene graph
+        sce.c = [];
+        for (var i = 0; i < r0.length; i++) {
+            sce.c[i] = dom.canvas(r0[i]);
+            dom.add(sce.c[i]);
+        }
     }
 }
 // layout
@@ -179,6 +199,12 @@ var ren = {
             sce.b[i].con.fillRect(0,0,sce.b[i].can.width,sce.b[i].can.height);
             sce.b[i].con.fillStyle = data.b[1];
             sce.b[i].con.fillRect(2,2,sce.b[i].can.width-4,sce.b[i].can.height-4);
+        }
+    },
+    "curr": function() {
+        for (var i = 0; i < sce.c.length; i++) {
+            sce.c[i].con.fillStyle = rgba.rand();
+            sce.c[i].con.fillRect(0,0,sce.c[i].can.width,sce.c[i].can.height);
         }
     }
 }
