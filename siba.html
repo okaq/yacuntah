@@ -113,6 +113,13 @@ var g = {
         // ren.curr();
         ren.data();
         ren.txt();
+        // add document level event click handler
+        document.addEventListener("click", g.click, false);
+    },
+    "click": function(e) {
+        console.log(e);
+        document.removeEventListener("click", g.click);
+        // play begins
     }
 }
 // data
