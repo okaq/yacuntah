@@ -103,7 +103,10 @@ var g = {
         sce.remove();
         g.panes = [[1920,1080,0,0],[640,640,0,220],[640,640,640,220],[640,640,1280,220]];
         sce.list(g.panes);
-        ren.curr();
+        // g.panes data
+        g.data = [[255,255,255,1.0],[0,0,0,1.0],[255,255,255,1.0],[0,0,0,1.0]];
+        // ren.curr();
+        ren.data();
     }
 }
 // data
@@ -204,6 +207,12 @@ var ren = {
     "curr": function() {
         for (var i = 0; i < sce.c.length; i++) {
             sce.c[i].con.fillStyle = rgba.rand();
+            sce.c[i].con.fillRect(0,0,sce.c[i].can.width,sce.c[i].can.height);
+        }
+    },
+    "data": function() {
+        for (var i = 0; i < sce.c.length; i++) {
+            sce.c[i].con.fillStyle = rgba.css(g.data[i]);
             sce.c[i].con.fillRect(0,0,sce.c[i].can.width,sce.c[i].can.height);
         }
     }
