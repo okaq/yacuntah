@@ -105,8 +105,14 @@ var g = {
         sce.list(g.panes);
         // g.panes data
         g.data = [[255,255,255,1.0],[0,0,0,1.0],[255,255,255,1.0],[0,0,0,1.0]];
+        // g.txt data, format {"text":[x-pos,y-pos]}
+        g.txt = {};
+        g.txt["okaq"] = [256,256];
+        g.txt["please click anywhere to"] = [24,500];
+        g.txt["begin playing the game"] = [24,556];
         // ren.curr();
         ren.data();
+        ren.txt();
     }
 }
 // data
@@ -214,6 +220,15 @@ var ren = {
         for (var i = 0; i < sce.c.length; i++) {
             sce.c[i].con.fillStyle = rgba.css(g.data[i]);
             sce.c[i].con.fillRect(0,0,sce.c[i].can.width,sce.c[i].can.height);
+        }
+    },
+    "txt": function() {
+        sce.c[2].con.fillStyle = rgba.css(g.data[1]);
+        sce.c[2].con.font = "48px sans";
+        for (var k in g.txt) {
+            var x0 = g.txt[k][0];
+            var y0 = g.txt[k][1];
+            sce.c[2].con.fillText(k, x0, y0);
         }
     }
 }
