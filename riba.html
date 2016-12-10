@@ -57,7 +57,20 @@ var g = {
         g.gamma = document.getElementById("gamma");
         g.gamma.style.fontFamily = "Noto Sans";
         g.gamma.style.fontSize = "32px";
-        g.gamma.innerHtml = "wxyzžАВ";
+        g.gamma.innerHTML = "wxyzžАВ";
+
+        // full text set
+        g.txt = `ABCĆČDĐEFGHIJKLMNOPQRSŠTUVWXYZŽ
+            abcčćdđefghijklmnopqrsštuvwxyzž
+            АБВГҐДЂЕЁЄЖЗЅИІЇЙЈКЛЉМНЊОПРСТЋУЎФХЦЧЏШЩЪЫЬЭЮЯ
+            абвгґдђеёєжзѕиіїйјклљмнњопрстћуўфхцчџшщъыьэюя
+            ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ
+            αβγδεζηθικλμνξοπρστυφχψωάΆέΈέΉίϊΐΊόΌύΰϋΎΫὰάὲέὴήὶίὸόὺύὼώΏ
+            आईऊऋॠऌॡऐऔऎअंअँकखगघङचछजझञटठडढणतथदधनपफबभयरवळशषसह
+            ĂÂÊÔƠƯăâêôơư1234567890
+            ०१२३४५६७८९‘?’“!”(%)[#]{@}/&<-+÷×=>®©$€£¥¢:;,.*₹`;
+        g.txta = g.txt.split('');
+        console.log(g.txta);
     }
 }
 // dom
