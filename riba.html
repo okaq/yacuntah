@@ -10,9 +10,26 @@
         <style type="text/css">
             html,body{width:1920px;height:1080px;margin:0px;border:0px;padding:0px;background-color:rgba(0,0,0,0);}
         </style>
-        <!--
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-        -->
+        <script type="text/javascript">
+            WebFontConfig = {
+                "fontloading": function(familyName, fvd) {
+                    console.log("loading: " + familyName + " " + fvd + "  font from google");
+                },
+                "fontactive": function(familyName, fvd) {
+                    console.log(familyName + " font rendered to document.");
+                    g.motd();
+                },
+                "fontinactive": function(familyName, fvd) {
+                    // five second timeout
+                    console.log("font load error");
+                },
+                "google": {
+                    "families": ['Noto Sans']
+                }
+            };
+            WebFont.load(WebFontConfig);
+        </script>
         <script type="text/javascript">
             // ok
         console.log("okaq gira yacunta siba ok!");
@@ -34,6 +51,13 @@ var g = {
 
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    },
+    "motd": function() {
+        console.log("render motd");
+        g.gamma = document.getElementById("gamma");
+        g.gamma.style.fontFamily = "Noto Sans";
+        g.gamma.style.fontSize = "32px";
+        g.gamma.innerHtml = "wxyzžАВ";
     }
 }
 // dom
@@ -112,6 +136,7 @@ auto sample noto unicode
 <br /> 
 atomic int64 server id + client time stamp
 <h1>need eames motif</h1>
+<div id="gamma"></div>
     </body>
 </html>
 
