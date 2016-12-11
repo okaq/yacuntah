@@ -49,6 +49,11 @@ var g = {
         var t0 = window.performance.now();
         console.log("riba started...");
 
+        // start grid sequence
+        // 1fps 1024x1024 centered rand rgba panal render
+        // g.tick = 0;
+        // g.id = window.setInterval(g.frame, 1000);
+
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
     },
@@ -71,6 +76,16 @@ var g = {
             ०१२३४५६७८९‘?’“!”(%)[#]{@}/&<-+÷×=>®©$€£¥¢:;,.*₹`;
         g.txta = g.txt.split('');
         console.log(g.txta);
+
+        g.start();
+    },
+    "start": function() {
+         // start grid sequence
+        // 1fps 1024x1024 centered rand rgba panal render
+        // g.tick = 0;
+        // g.id = window.setInterval(g.frame, 1000);
+
+   
     }
 }
 // dom
