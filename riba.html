@@ -82,6 +82,9 @@ var g = {
     "start": function() {
          // start grid sequence
         // 1fps 1024x1024 centered rand rgba panal render
+        // add render panes
+        sce.start();
+        // start loop
         g.tick = 0;
         g.id = window.setInterval(g.fan, 1000);
     },
@@ -93,6 +96,26 @@ var g = {
             console.log("fininshed!");
             return;
         }
+    }
+}
+// scene
+var sce = {
+    "start": function() {
+        // data
+        sce.a = {};
+        sce.a["bkgd"] = {};
+        sce.a["bkgd"].r = [1920,1080,0,0];
+        sce.a["bkgd"].c = dom.canvas(sce.a["bkgd"].r);
+        sce.a["bkgd"].b = rgba.rand();
+        // set
+        sce.b = ["bkgd"];
+    },
+    "clear": function() {
+        // clear all dom elements
+        // optimize by diffing elements
+    },
+    "add": function() {
+        // display to dom
     }
 }
 // dom
