@@ -84,6 +84,7 @@ var g = {
         // 1fps 1024x1024 centered rand rgba panal render
         // add render panes
         sce.start();
+        sce.add();
         // start loop
         g.tick = 0;
         g.id = window.setInterval(g.fan, 1000);
@@ -96,6 +97,7 @@ var g = {
             console.log("fininshed!");
             return;
         }
+        // render scene
     }
 }
 // scene
@@ -103,19 +105,50 @@ var sce = {
     "start": function() {
         // data
         sce.a = {};
+        // bkgd
         sce.a["bkgd"] = {};
         sce.a["bkgd"].r = [1920,1080,0,0];
         sce.a["bkgd"].c = dom.canvas(sce.a["bkgd"].r);
         sce.a["bkgd"].b = rgba.rand();
+        // pane
+        sce.a["pane"] = {};
+        sce.a["pane"].r = [1024,1024,(1920-1024)/2,(1080-1024)/2];
+        sce.a["pane"].c = dom.canvas(sce.a["pane"].r);
+        sce.a["pane"].b = rgba.rand();
         // set
-        sce.b = ["bkgd"];
+        sce.b = ["bkgd","pane"];
     },
     "clear": function() {
         // clear all dom elements
         // optimize by diffing elements
+        for (var i = 0; i < sce.b.length; i++) {
+            var k0 = sce.b[i];
+            dom.remove(sce.b[k0].c);
+        }
     },
     "add": function() {
         // display to dom
+        for (var i = 0; i < sce.b.length; i++) {
+            var k0 = sce.b[i];
+            dom.add(sce.b[k0].c);
+        }
+    }
+}
+// render
+var ren = {
+    "set": function() {
+        // all data in current set
+        for (var i = 0; i < sce.b.length; i++) {
+            var k0 = sce.b[i];
+            var c0 = sce.a[k0].c;
+            var d0 = sce.a[k0].b;
+        }
+    }
+}
+// pixel
+var pix = {
+    "run": function() {
+        // pixel manipulation and sample data
     }
 }
 // dom
