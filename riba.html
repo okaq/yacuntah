@@ -18,7 +18,9 @@
                 },
                 "fontactive": function(familyName, fvd) {
                     console.log(familyName + " font rendered to document.");
-                    g.motd();
+                    // g.motd();
+                    g.full();
+                    // g.start();
                 },
                 "fontinactive": function(familyName, fvd) {
                     // five second timeout
@@ -49,6 +51,9 @@ var g = {
         var t0 = window.performance.now();
         console.log("riba started...");
 
+        // subs
+        dom.init();
+
         // start grid sequence
         // 1fps 1024x1024 centered rand rgba panal render
         // g.tick = 0;
@@ -63,7 +68,8 @@ var g = {
         g.gamma.style.fontFamily = "Noto Sans";
         g.gamma.style.fontSize = "32px";
         g.gamma.innerHTML = "wxyzžАВ";
-
+    },
+    "full": function() {
         // full text set
         g.txt = `ABCĆČDĐEFGHIJKLMNOPQRSŠTUVWXYZŽ
             abcčćdđefghijklmnopqrsštuvwxyzž
@@ -75,7 +81,7 @@ var g = {
             ĂÂÊÔƠƯăâêôơư1234567890
             ०१२३४५६७८९‘?’“!”(%)[#]{@}/&<-+÷×=>®©$€£¥¢:;,.*₹`;
         g.txta = g.txt.split('');
-        console.log(g.txta);
+        console.log(g.txta.length, g.txta);
 
         g.start();
     },
@@ -91,13 +97,15 @@ var g = {
     },
     "fan": function() {
         g.tick = g.tick + 1;
-        console.log("tick count: " + g.tick);
+        console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
         if (g.tick >= g.txta.length) {
             window.clearInterval(g.id);
             console.log("fininshed!");
             return;
         }
         // render scene
+        sce.shuf();
+        ren.set();
     }
 }
 // scene
@@ -123,14 +131,21 @@ var sce = {
         // optimize by diffing elements
         for (var i = 0; i < sce.b.length; i++) {
             var k0 = sce.b[i];
-            dom.remove(sce.b[k0].c);
+            dom.remove(sce.a[k0].c);
         }
     },
     "add": function() {
         // display to dom
         for (var i = 0; i < sce.b.length; i++) {
             var k0 = sce.b[i];
-            dom.add(sce.b[k0].c);
+            console.log(k0, sce.a[k0]);
+            dom.add(sce.a[k0].c);
+        }
+    },
+    "shuf": function() {
+        for (var i = 0; i < sce.b.length; i++) {
+            var k0 = sce.b[i];
+            sce.a[k0].b = rgba.rand();
         }
     }
 }
@@ -142,6 +157,8 @@ var ren = {
             var k0 = sce.b[i];
             var c0 = sce.a[k0].c;
             var d0 = sce.a[k0].b;
+            c0.con.fillStyle = d0;
+            c0.con.fillRect(0,0,c0.can.width,c0.can.height);
         }
     }
 }
@@ -219,6 +236,7 @@ var rgba = {
         </script>
     </head>
     <body id="alpha">
+        <!--
         <h2>ok riba go!</h2>
 <br />
 async / await test
@@ -228,6 +246,7 @@ auto sample noto unicode
 atomic int64 server id + client time stamp
 <h1>need eames motif</h1>
 <div id="gamma"></div>
+        -->
     </body>
 </html>
 
