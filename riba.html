@@ -105,8 +105,8 @@ var g = {
         }
         // render scene
         sce.shuf();
-        // ren.glyph();
         ren.set();
+        ren.glyph();
     }
 }
 // scene
@@ -162,8 +162,13 @@ var ren = {
             c0.con.fillRect(0,0,c0.can.width,c0.can.height);
         }
     },
-    "glyph": function(i0) {
+    "glyph": function() {
         // render text glyph and center
+        var g0 = g.txta[g.tick-1];
+        var c0 = sce.a["pane"].c;
+        c0.con.fillStyle = rgba.rand();
+        c0.con.font = "512px Noto Sans";
+        c0.con.fillText(g0, 512, 512);
     }
 }
 // pixel
