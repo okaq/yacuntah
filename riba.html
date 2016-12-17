@@ -125,8 +125,8 @@ var sce = {
         sce.a["pane"].c = dom.canvas(sce.a["pane"].r);
         sce.a["pane"].b = rgba.rand();
         sce.a["pane"].d = {};
-        sce.a["pane"].d.r = [1012,1012,16,16];
-        sce.a["pane"].d.f = "128px Noto Sans";
+        sce.a["pane"].d.r = [1080,1080,150,900];
+        sce.a["pane"].d.f = "986px Noto Sans";
         // set
         sce.b = ["bkgd","pane"];
     },
@@ -172,8 +172,10 @@ var ren = {
         c0.con.fillStyle = rgba.rand();
         // encode size, font, offset and display rect
         // in scene data object
-        c0.con.font = "512px Noto Sans";
-        c0.con.fillText(g0, 512, 512);
+        // c0.con.font = "512px Noto Sans";
+        // c0.con.fillText(g0, 512, 512);
+        c0.con.font = sce.a["pane"].d.f;
+        c0.con.fillText(g0, sce.a["pane"].d.r[2], sce.a["pane"].d.r[3]);
     }
 }
 // pixel
