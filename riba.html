@@ -101,12 +101,30 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         if (g.tick >= g.txta.length) {
             window.clearInterval(g.id);
             console.log("fininshed!");
+            g.comp();
             return;
         }
         // render scene
         sce.shuf();
         ren.set();
         ren.glyph();
+        // console.log(sce.mt);
+    },
+    "comp": function() {
+        // compile text stats
+        console.log(sce.mt);
+        var s0 = 0.0;
+        for (var i = 0; i < sce.mt.length; i++) {
+            s0 = s0 + sce.mt[i].width;
+        }
+        console.log("total: " + s0);
+        var s1 = (s0 / sce.mt.length);
+        console.log("mean width: " + s1);
+
+        // use width textMetrics property to center horizontally
+        // vertical font bounding box total ascent: 1054
+        // total descent: 289, when font size is 986px
+        // use actualBoundingBox of text to center
     }
 }
 // scene
@@ -126,9 +144,11 @@ var sce = {
         sce.a["pane"].b = rgba.rand();
         sce.a["pane"].d = {};
         sce.a["pane"].d.r = [1080,1080,150,900];
-        sce.a["pane"].d.f = "986px Noto Sans";
+        sce.a["pane"].d.f = "886px Noto Sans";
         // set
         sce.b = ["bkgd","pane"];
+        // text stats
+        sce.mt = [];
     },
     "clear": function() {
         // clear all dom elements
@@ -176,6 +196,8 @@ var ren = {
         // c0.con.fillText(g0, 512, 512);
         c0.con.font = sce.a["pane"].d.f;
         c0.con.fillText(g0, sce.a["pane"].d.r[2], sce.a["pane"].d.r[3]);
+        // stats
+        sce.mt[g.tick-1] = c0.con.measureText(g0);
     }
 }
 // pixel
