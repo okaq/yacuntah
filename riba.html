@@ -143,8 +143,8 @@ var sce = {
         sce.a["pane"].c = dom.canvas(sce.a["pane"].r);
         sce.a["pane"].b = rgba.rand();
         sce.a["pane"].d = {};
-        sce.a["pane"].d.r = [1080,1080,150,900];
-        sce.a["pane"].d.f = "886px Noto Sans";
+        sce.a["pane"].d.r = [1080,1080,200,820];
+        sce.a["pane"].d.f = "832px Noto Sans";
         // set
         sce.b = ["bkgd","pane"];
         // text stats
@@ -195,9 +195,13 @@ var ren = {
         // c0.con.font = "512px Noto Sans";
         // c0.con.fillText(g0, 512, 512);
         c0.con.font = sce.a["pane"].d.f;
-        c0.con.fillText(g0, sce.a["pane"].d.r[2], sce.a["pane"].d.r[3]);
+        // c0.con.fillText(g0, sce.a["pane"].d.r[2], sce.a["pane"].d.r[3]);
         // stats
         sce.mt[g.tick-1] = c0.con.measureText(g0);
+        // avg width
+        var w0 = sce.mt[g.tick-1].width;
+        var x0 = ((1024 - w0) / 2) >>> 0;
+        c0.con.fillText(g0, x0, sce.a["pane"].d.r[3]);
     }
 }
 // pixel
