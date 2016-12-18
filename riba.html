@@ -100,7 +100,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
         if (g.tick >= g.txta.length) {
             window.clearInterval(g.id);
-            console.log("fininshed!");
+            console.log("finished!");
             g.comp();
             return;
         }
@@ -109,6 +109,14 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         ren.set();
         ren.glyph();
         // console.log(sce.mt);
+        
+        // sampling
+        // create offscreen canvas buffer
+        // grab image data from glyph render
+        // translate sample cells to pixel blocks
+        // threshold via global average
+        // store result to server
+        // json and base64 string encode decoders
     },
     "comp": function() {
         // compile text stats
