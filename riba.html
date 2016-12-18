@@ -153,10 +153,16 @@ var sce = {
         sce.a["pane"].d = {};
         sce.a["pane"].d.r = [1080,1080,200,820];
         sce.a["pane"].d.f = "832px Noto Sans";
+        // blit
+        sce.a["blit"] = {};
+        sce.a["blit"].r = [1024,1024,(1920-1024)/2,(1080-1024)/2];
+        sce.a["blit"].c = dom.canvas(sce.a["blit"].r);
         // set
         sce.b = ["bkgd","pane"];
         // text stats
         sce.mt = [];
+        // sample data
+        sce.d = [];
     },
     "clear": function() {
         // clear all dom elements
@@ -179,6 +185,9 @@ var sce = {
             var k0 = sce.b[i];
             sce.a[k0].b = rgba.rand();
         }
+    },
+    "flip": function() {
+        // toggle between blit and pane renders
     }
 }
 // render
