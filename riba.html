@@ -54,6 +54,7 @@ var g = {
         // subs
         dom.init();
         xhr.open();
+        sam.hold();
 
         // start grid sequence
         // 1fps 1024x1024 centered rand rgba panal render
@@ -94,7 +95,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         sce.add();
         // start loop
         g.tick = 0;
-        g.id = window.setInterval(g.fan, 2500);
+        g.id = window.setInterval(g.fan, 500);
     },
     "fan": function() {
         g.tick = g.tick + 1;
@@ -119,6 +120,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         // store result to server
         // json and base64 string encode decoders
         sce.grab();
+        sam.pro();
     },
     "comp": function() {
         // compile text stats
@@ -152,7 +154,30 @@ var xhr = {
 }
 // sample
 var sam = {
+    "hold": function() {
+        // threshold bit array
+        sam.d = [];
+        // block dims
+        sam.px = 1024;
+        sam.py = 1024;
+        sam.pt = (sam.px * sam.py) >>> 0;
+        sam.bx = 16;
+        sam.by = 16;
+        sam.nx = (sam.px / sam.bx) >>> 0;
+        sam.ny = (sam.py / sam.by) >>> 0;
+        sam.nt = (sam.nx * sam.ny) >>> 0;
+        console.log(sam);
+        // block to pixel transforms
+    },
     "pro": function() {
+        for (var y0 = 0; y0 < sam.ny; y0++) {
+            for (var x0 = 0; x0 < sam.nx; x0++) {
+
+            }
+        }
+    },
+    "sub": function(x0,y0,w0,h0) {
+        // return sub pixel array for given block
     }
 }
 // scene
@@ -211,7 +236,7 @@ var sce = {
     },
     "grab": function() {
         var c0 = sce.a["pane"].c;
-        sce.e = c0.con.getImageData(0,0,c0.can.width,c0.can.height);
+        sce.d[g.tick-1] = c0.con.getImageData(0,0,c0.can.width,c0.can.height);
         // console.log(sce.e.data.length,1024*1024*4);
     }
 }
