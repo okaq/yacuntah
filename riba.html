@@ -118,6 +118,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         // threshold via global average
         // store result to server
         // json and base64 string encode decoders
+        sce.grab();
     },
     "comp": function() {
         // compile text stats
@@ -146,6 +147,7 @@ var xhr = {
     },
     "load": function() {
         console.log(xhr.a.responseText);
+        xhr.id = xhr.a.responseText;
     }
 }
 // sample
@@ -206,6 +208,11 @@ var sce = {
     },
     "flip": function() {
         // toggle between blit and pane renders
+    },
+    "grab": function() {
+        var c0 = sce.a["pane"].c;
+        sce.e = c0.con.getImageData(0,0,c0.can.width,c0.can.height);
+        // console.log(sce.e.data.length,1024*1024*4);
     }
 }
 // render
