@@ -17,6 +17,7 @@ var (
     // rand seed and rng
     // peer id cache
     R *rand.Rand
+    P map[string]string
 )
 
 // peer id and conn cache
