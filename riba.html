@@ -53,6 +53,7 @@ var g = {
 
         // subs
         dom.init();
+        xhr.open();
 
         // start grid sequence
         // 1fps 1024x1024 centered rand rgba panal render
@@ -93,7 +94,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         sce.add();
         // start loop
         g.tick = 0;
-        g.id = window.setInterval(g.fan, 1000);
+        g.id = window.setInterval(g.fan, 2500);
     },
     "fan": function() {
         g.tick = g.tick + 1;
@@ -109,7 +110,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         ren.set();
         ren.glyph();
         // console.log(sce.mt);
-        
+
         // sampling
         // create offscreen canvas buffer
         // grab image data from glyph render
@@ -138,6 +139,13 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
 // net
 var xhr = {
     "open": function() {
+        xhr.a = new window.XMLHttpRequest();
+        xhr.a.addEventListener("load", xhr.load);
+        xhr.a.open("GET", "http://localhost:8080/a")
+        xhr.a.send();
+    },
+    "load": function() {
+        console.log(xhr.a.responseText);
     }
 }
 // sample
@@ -311,12 +319,10 @@ var rgba = {
 async / await test
 <br />
 auto sample noto unicode
-<br /> 
+<br />
 atomic int64 server id + client time stamp
 <h1>need eames motif</h1>
 <div id="gamma"></div>
         -->
     </body>
 </html>
-
-
