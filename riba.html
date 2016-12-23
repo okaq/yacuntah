@@ -172,11 +172,17 @@ var sam = {
     "pro": function() {
         for (var y0 = 0; y0 < sam.ny; y0++) {
             for (var x0 = 0; x0 < sam.nx; x0++) {
-
+                var x1 = (x0 * sam.bx) >>> 0;
+                var y1 = (sam.px * sam.by * y0) >>> 0;
+                var i0 = (x1 + y1) >>> 0;
+                var i1 = (i0 * 4) >>> 0;
+                console.log(i1);
+                // index into img data array
+                // inner loop over block
             }
         }
     },
-    "sub": function(x0,y0,w0,h0) {
+    "sub": function(i0) {
         // return sub pixel array for given block
     }
 }
