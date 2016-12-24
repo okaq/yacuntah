@@ -176,14 +176,31 @@ var sam = {
                 var y1 = (sam.px * sam.by * y0) >>> 0;
                 var i0 = (x1 + y1) >>> 0;
                 var i1 = (i0 * 4) >>> 0;
-                console.log(i1);
+                // console.log(i1);
                 // index into img data array
                 // inner loop over block
+                var r0 = sam.sub(i0);
+                // threshold
+                // set data in bit array
             }
         }
     },
     "sub": function(i0) {
         // return sub pixel array for given block
+        var r0 = [];
+        for (var y0 = 0; y0 < sam.by; y0++) {
+            for (var x0 = 0; x0 < sam.bx; x0++) {
+                // rgba values in image data array
+                var i1 = (i0 + (x0 * 4) + (y0 * (sam.px * 4))) >>> 0;
+                r0.push(sce.d[g.tick-1][i1+0]);
+                r0.push(sce.d[g.tick-1][i1+1]);
+                r0.push(sce.d[g.tick-1][i1+2]);
+                r0.push(sce.d[g.tick-1][i1+3]);
+            }
+        }
+        return r0;
+        // change to black and white
+        // rgba values for threshold analysis
     }
 }
 // scene
