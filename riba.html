@@ -95,7 +95,7 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
         sce.add();
         // start loop
         g.tick = 0;
-        g.id = window.setInterval(g.fan, 500);
+        g.id = window.setInterval(g.fan, 2500);
     },
     "fan": function() {
         g.tick = g.tick + 1;
@@ -107,10 +107,14 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
             return;
         }
         // render scene
-        sce.shuf();
+        // sce.shuf();
+        sce.mono();
         ren.set();
         ren.glyph();
         // console.log(sce.mt);
+
+        // monochrome for sample data
+        // ren.mono();
 
         // sampling
         // create offscreen canvas buffer
@@ -261,6 +265,11 @@ var sce = {
         var c0 = sce.a["pane"].c;
         sce.d[g.tick-1] = c0.con.getImageData(0,0,c0.can.width,c0.can.height);
         // console.log(sce.e.data.length,1024*1024*4);
+    },
+    "mono": function() {
+        sce.a["bkgd"].b = rgba.css([255,255,255,1.0]);
+        sce.a["pane"].b = rgba.css([0,0,0,1.0]);
+        // print in white
     }
 }
 // render
@@ -292,6 +301,9 @@ var ren = {
         var w0 = sce.mt[g.tick-1].width;
         var x0 = ((1024 - w0) / 2) >>> 0;
         c0.con.fillText(g0, x0, sce.a["pane"].d.r[3]);
+    },
+    "mono": function() {
+        // special monochrome render call
     }
 }
 // pixel
