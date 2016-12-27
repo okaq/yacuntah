@@ -91,9 +91,9 @@ abcčćdđefghijklmnopqrsštuvwxyzž\
     "imp": function() {
         // just the important set
         g.txt = `ABCDEFGHIJKLMNOPQRSTUVWXYZ\
-        abcdefghijklmnopqrstuvwxyz\
-        1234567890\
-        ~!@#$%^&*()-_=+[{]}|;:'",<.>/?`;
+abcdefghijklmnopqrstuvwxyz\
+1234567890\
+~!@#$%^&*()-_=+[{]}|;:'",<.>/?`;
         g.txta = g.txt.split('');
         console.log(g.txta.length, g.txta);
 
@@ -195,8 +195,9 @@ var sam = {
                 // console.log(i1);
                 // index into img data array
                 // inner loop over block
-                var r0 = sam.sub(i0);
+                var r0 = sam.sub(i1);
                 // threshold
+                var t0 = sma.thresh(r0);
                 // set data in bit array
             }
         }
@@ -212,11 +213,19 @@ var sam = {
                 r0.push(sce.d[g.tick-1][i1+1]);
                 r0.push(sce.d[g.tick-1][i1+2]);
                 r0.push(sce.d[g.tick-1][i1+3]);
+                // only need one for monochrome
             }
         }
         return r0;
         // change to black and white
         // rgba values for threshold analysis
+    },
+    "thresh": function(r0) {
+        // white count
+        var w0 = 0;
+        for (var i = 0; i < r0.length; i+=4) {
+
+        }
     }
 }
 // scene

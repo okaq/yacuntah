@@ -31,6 +31,10 @@ func IdHandler(w http.ResponseWriter, r *http.Request) {
     w.Write(b0)
 }
 
+func PoolHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+}
+
 func RibaHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
     http.ServeFile(w, r, INDEX)
@@ -41,5 +45,6 @@ func main() {
     R = rand.New(rand.NewSource(time.Now().UnixNano()))
     http.HandleFunc("/", RibaHandler)
     http.HandleFunc("/a", IdHandler)
+    http.HandleFunc("/b", PoolHandler)
     http.ListenAndServe(":8080", nil)
 }
