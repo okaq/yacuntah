@@ -137,6 +137,7 @@ abcdefghijklmnopqrstuvwxyz\
         // json and base64 string encode decoders
         sce.grab();
         sam.pro();
+        // render sam.d sample blocks
     },
     "comp": function() {
         // compile text stats
@@ -186,6 +187,8 @@ var sam = {
         // block to pixel transforms
     },
     "pro": function() {
+        // new data array
+        sam.d[g.tick-1] = [];
         for (var y0 = 0; y0 < sam.ny; y0++) {
             for (var x0 = 0; x0 < sam.nx; x0++) {
                 var x1 = (x0 * sam.bx) >>> 0;
@@ -197,8 +200,13 @@ var sam = {
                 // inner loop over block
                 var r0 = sam.sub(i1);
                 // threshold
-                var t0 = sma.thresh(r0);
+                var b0 = sam.thresh(r0);
                 // set data in bit array
+                if (b0 == true) {
+                    sam.d[g.tick-1][i0] = 1;
+                } else {
+                    sam.d[g.tick-1][i0] = 0;
+                }
             }
         }
     },
