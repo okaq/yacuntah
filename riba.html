@@ -224,8 +224,16 @@ var sam = {
         // white count
         var w0 = 0;
         for (var i = 0; i < r0.length; i+=4) {
-
+            if (r0[i] == 255) {
+                w0 = w0 + 1
+            }
         }
+        // thresh value
+        var w1 = (r0.length * 0.10) >>> 0;
+        if (w0 <= w1) {
+            return true;
+        }
+        return false;
     }
 }
 // scene
