@@ -107,7 +107,7 @@ abcdefghijklmnopqrstuvwxyz\
         sce.add();
         // start loop
         g.tick = 0;
-        g.id = window.setInterval(g.fan, 2500);
+        g.id = window.setInterval(g.fan, 4000);
     },
     "fan": function() {
         g.tick = g.tick + 1;
@@ -143,7 +143,15 @@ abcdefghijklmnopqrstuvwxyz\
         // remove pane, add blit
         // render blit one second
         // remove blit, re-add pane
+        window.setTimeout(g.blit, 1000);
     },
+    "blit": function() {
+        // swap and render blit
+        window.setTimeout(g.final, 1000);
+    }
+    "final": function() {
+        // send data to server
+    }
     "comp": function() {
         // compile text stats
         console.log(sce.mt);
