@@ -147,6 +147,8 @@ abcdefghijklmnopqrstuvwxyz\
     },
     "blit": function() {
         // swap and render blit
+        // fast: clear pane and render as rects
+        // grid dom add rem per frame costly
         window.setTimeout(g.final, 1000);
     }
     "final": function() {
