@@ -149,11 +149,13 @@ abcdefghijklmnopqrstuvwxyz\
         // swap and render blit
         // fast: clear pane and render as rects
         // grid dom add rem per frame costly
+        ren.clear();
+        ren.data();
         window.setTimeout(g.final, 1000);
-    }
+    },
     "final": function() {
         // send data to server
-    }
+    },
     "comp": function() {
         // compile text stats
         console.log(sce.mt);
@@ -217,10 +219,11 @@ var sam = {
                 // threshold
                 var b0 = sam.thresh(r0);
                 // set data in bit array
+                var i2 = ((y0 * sam.nx) + x0) >>> 0;
                 if (b0 == true) {
-                    sam.d[g.tick-1][i0] = 1;
+                    sam.d[g.tick-1][i2] = 1;
                 } else {
-                    sam.d[g.tick-1][i0] = 0;
+                    sam.d[g.tick-1][i2] = 0;
                 }
             }
         }
@@ -357,6 +360,19 @@ var ren = {
     },
     "mono": function() {
         // special monochrome render call
+    },
+    "clear": function() {
+        var c0 = sce.a["pane"].c;
+        var b0 = sce.a["pane"].b;
+        c0.con.fillStyle = b0;
+        c0.con.fillRect(0,0,c0.can.width,c0.can.height);
+        // alt just call sce.set() again
+    },
+    "data": function() {
+        var c0 = sce.a["pane"].c;
+        c0.con.fillStyle = rgba.css([255,255,255,1.0]);
+        var d0 = sam.d[g.tick-1];
+        console.log(d0.length, sam.nt);
     }
 }
 // pixel
