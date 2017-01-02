@@ -155,6 +155,7 @@ abcdefghijklmnopqrstuvwxyz\
     },
     "final": function() {
         // send data to server
+        console.log("clearing");
     },
     "comp": function() {
         // compile text stats
@@ -220,11 +221,13 @@ var sam = {
                 var b0 = sam.thresh(r0);
                 // set data in bit array
                 var i2 = ((y0 * sam.nx) + x0) >>> 0;
+
                 if (b0 == true) {
                     sam.d[g.tick-1][i2] = 1;
                 } else {
                     sam.d[g.tick-1][i2] = 0;
                 }
+                // sam.d[g.tick-1][i2] = (Math.random() >= 0.5 ? 1 : 0);
             }
         }
     },
@@ -255,8 +258,10 @@ var sam = {
             }
         }
         // thresh value
-        var w1 = (r0.length * 0.10) >>> 0;
-        if (w0 <= w1) {
+        var r1 = (r0.length / 4) >>> 0;
+        var w1 = (r1 * 0.10) >>> 0;
+        console.log(w0, w1); // 0, 25
+        if (w0 >= w1) {
             return true;
         }
         return false;
@@ -372,7 +377,16 @@ var ren = {
         var c0 = sce.a["pane"].c;
         c0.con.fillStyle = rgba.css([255,255,255,1.0]);
         var d0 = sam.d[g.tick-1];
-        console.log(d0.length, sam.nt);
+        // console.log(d0.length, sam.nt);
+        for (var i = 0; i < d0.length; i++) {
+            var x0 = i % sam.nx;
+            var y0 = (i / sam.nx) >>> 0;
+            var x1 = (x0 * sam.bx) >>> 0;
+            var y1 = (y0 * sam.by) >>> 0;
+            if (d0[i] == 1) {
+                c0.con.fillRect(x1, y1, sam.bx, sam.by);
+            }
+        }
     }
 }
 // pixel
