@@ -112,7 +112,7 @@ abcdefghijklmnopqrstuvwxyz\
     "fan": function() {
         g.tick = g.tick + 1;
         console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
-        if (g.tick >= g.txta.length) {
+        if (g.tick >= 2) {  //g.txta.length) {
             window.clearInterval(g.id);
             console.log("finished!");
             g.comp();
@@ -213,12 +213,14 @@ var sam = {
                 var y1 = (sam.px * sam.by * y0) >>> 0;
                 var i0 = (x1 + y1) >>> 0;
                 var i1 = (i0 * 4) >>> 0;
-                // console.log(i1);
+                // console.log(x0, y0, i0, i1);
                 // index into img data array
                 // inner loop over block
                 var r0 = sam.sub(i1);
+                // console.log(r0);
                 // threshold
                 var b0 = sam.thresh(r0);
+                // console.log(b0);
                 // set data in bit array
                 var i2 = ((y0 * sam.nx) + x0) >>> 0;
 
@@ -233,15 +235,22 @@ var sam = {
     },
     "sub": function(i0) {
         // return sub pixel array for given block
+        var d0 = sce.d[g.tick-1].data;
         var r0 = [];
         for (var y0 = 0; y0 < sam.by; y0++) {
             for (var x0 = 0; x0 < sam.bx; x0++) {
                 // rgba values in image data array
                 var i1 = (i0 + (x0 * 4) + (y0 * (sam.px * 4))) >>> 0;
+                /*
                 r0.push(sce.d[g.tick-1][i1+0]);
                 r0.push(sce.d[g.tick-1][i1+1]);
                 r0.push(sce.d[g.tick-1][i1+2]);
                 r0.push(sce.d[g.tick-1][i1+3]);
+                */
+                r0.push(d0[i1+0]);
+                r0.push(d0[i1+1]);
+                r0.push(d0[i1+2]);
+                r0.push(d0[i1+3]);
                 // only need one for monochrome
             }
         }
@@ -260,7 +269,7 @@ var sam = {
         // thresh value
         var r1 = (r0.length / 4) >>> 0;
         var w1 = (r1 * 0.10) >>> 0;
-        console.log(w0, w1); // 0, 25
+        // console.log(w0, w1); // 0, 25
         if (w0 >= w1) {
             return true;
         }
