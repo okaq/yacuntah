@@ -112,7 +112,7 @@ abcdefghijklmnopqrstuvwxyz\
     "fan": function() {
         g.tick = g.tick + 1;
         console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
-        if (g.tick >= 2) {  //g.txta.length) {
+        if (g.tick >= g.txta.length) {
             window.clearInterval(g.id);
             console.log("finished!");
             g.comp();
@@ -156,6 +156,10 @@ abcdefghijklmnopqrstuvwxyz\
     "final": function() {
         // send data to server
         console.log("clearing");
+        // package bit array sample data as json
+        // send raw bits to server to package as json, base64 string
+        // test binary, typed array, json perf
+        // both encode and decode
     },
     "comp": function() {
         // compile text stats
@@ -268,7 +272,7 @@ var sam = {
         }
         // thresh value
         var r1 = (r0.length / 4) >>> 0;
-        var w1 = (r1 * 0.10) >>> 0;
+        var w1 = (r1 * 0.50) >>> 0;
         // console.log(w0, w1); // 0, 25
         if (w0 >= w1) {
             return true;
