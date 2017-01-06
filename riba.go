@@ -33,6 +33,16 @@ func IdHandler(w http.ResponseWriter, r *http.Request) {
 
 func PoolHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(r)
+    // post format for joruri waka roboto font data
+    // arraybuffer, uint8array from threshold bit array
+    // slice and join 8 "0" and "1" chars to form byte string
+    // parseInt(byte, 2) and push to buffer array
+    // json.stringify uint8array
+    // send to server as type arraybuffer
+    // read from req body as new bytes buffer
+    // json marshal bytes
+    // re-encode to json file, or base64 string
+    // simplify, keep as bit string
 }
 
 func RibaHandler(w http.ResponseWriter, r *http.Request) {
