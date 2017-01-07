@@ -155,11 +155,14 @@ abcdefghijklmnopqrstuvwxyz\
     },
     "final": function() {
         // send data to server
-        console.log("clearing");
+        // console.log("clearing");
         // package bit array sample data as json
         // send raw bits to server to package as json, base64 string
         // test binary, typed array, json perf
         // both encode and decode
+        console.log("sending");
+        // pack bits
+        xhr.send();
     },
     "comp": function() {
         // compile text stats
@@ -189,6 +192,18 @@ var xhr = {
     "load": function() {
         console.log(xhr.a.responseText);
         xhr.id = xhr.a.responseText;
+    },
+    "send": function() {
+        xhr.b = new window.XMLHttpRequest();
+        xhr.b.addEventListener("load", xhr.load2);
+        xhr.b.open("PUT", "http://localhost:8080/b")
+        // send bit array
+        xhr.b.send(sam.d[g.tick-1]);
+        // stringify json uint8array compressed
+        // set mime type in header
+    },
+    "load2": function() {
+        console.log(xhr.b.responseText);
     }
 }
 // sample

@@ -43,6 +43,7 @@ func PoolHandler(w http.ResponseWriter, r *http.Request) {
     // json marshal bytes
     // re-encode to json file, or base64 string
     // simplify, keep as bit string
+
 }
 
 func RibaHandler(w http.ResponseWriter, r *http.Request) {
