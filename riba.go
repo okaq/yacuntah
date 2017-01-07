@@ -3,6 +3,7 @@ package main
 
 import (
     "fmt"
+    "io/ioutil"
     "math/rand"
     "net/http"
     "strconv"
@@ -43,7 +44,13 @@ func PoolHandler(w http.ResponseWriter, r *http.Request) {
     // json marshal bytes
     // re-encode to json file, or base64 string
     // simplify, keep as bit string
-
+    b0, err := ioutil.ReadAll(r.Body)
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Println(string(b0))
+    // bit array string, conv to golang byte slice
+    defer r.Body.Close()
 }
 
 func RibaHandler(w http.ResponseWriter, r *http.Request) {
