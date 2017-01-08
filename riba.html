@@ -112,7 +112,7 @@ abcdefghijklmnopqrstuvwxyz\
     "fan": function() {
         g.tick = g.tick + 1;
         console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
-        if (g.tick >= 2) { // g.txta.length) {
+        if (g.tick >= 16) { // g.txta.length) {
             window.clearInterval(g.id);
             console.log("finished!");
             g.comp();
@@ -199,9 +199,12 @@ var xhr = {
         xhr.b.addEventListener("load", xhr.load2);
         xhr.b.open("PUT", "http://localhost:8080/b")
         // send bit array
-        xhr.b.send(sam.d[g.tick-1]);
+        // xhr.b.send(sam.d[g.tick-1]);
         // stringify json uint8array compressed
         // set mime type in header
+        xhr.b.send(sam.e[g.tick-1]);
+        // var j0 = JSON.stringify(sam.e[g.tick-1]);
+        // xhr.b.send(j0);
     },
     "load2": function() {
         console.log(xhr.b.responseText);
