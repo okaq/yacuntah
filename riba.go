@@ -51,6 +51,8 @@ func PoolHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println(string(b0))
     // bit array string, conv to golang byte slice
     defer r.Body.Close()
+    s0 := fmt.Sprintf("%d bytes read ok!", len(b0))
+    w.Write([]byte(s0))
 }
 
 func RibaHandler(w http.ResponseWriter, r *http.Request) {
