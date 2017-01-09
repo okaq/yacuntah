@@ -13,6 +13,7 @@ import (
 
 const (
     INDEX = "riba.html"
+    IMP = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890~!@#$%^&*()-_=+[{]}|;:'",<.>/?`
 )
 
 var (

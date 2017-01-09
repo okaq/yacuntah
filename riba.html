@@ -112,7 +112,7 @@ abcdefghijklmnopqrstuvwxyz\
     "fan": function() {
         g.tick = g.tick + 1;
         console.log("tick count: " + g.tick + ",  % finish: " + g.tick / g.txta.length);
-        if (g.tick >= 16) { // g.txta.length) {
+        if (g.tick >= g.txta.length) {
             window.clearInterval(g.id);
             console.log("finished!");
             g.comp();
