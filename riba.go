@@ -2,6 +2,7 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "io/ioutil"
     "math/rand"
@@ -49,8 +50,16 @@ func PoolHandler(w http.ResponseWriter, r *http.Request) {
         fmt.Println(err)
     }
     fmt.Println(b0)
+    // raw binary bytes recieved
+    // marshal json into base64 string and save to file
     // bit array string, conv to golang byte slice
     defer r.Body.Close()
+    j0, err := json.Marshal(b0)
+    if err != nil {
+        fmt.Println(err)
+    }
+    s1 := string(j0)
+    fmt.Println(len(s1), s1)
     s0 := fmt.Sprintf("%d bytes read ok!", len(b0))
     w.Write([]byte(s0))
 }
