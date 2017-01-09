@@ -1,0 +1,5 @@
+# git ignore file for okaq gira yacuntah
+save/**
+samp/**
+fonts/**
+

@@ -2,6 +2,7 @@
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
     "io/ioutil"
@@ -15,6 +16,7 @@ import (
 const (
     INDEX = "riba.html"
     IMP = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890~!@#$%^&*()-_=+[{]}|;:'",<.>/?`
+    SAVE = "save/noto.json"
 )
 
 var (
@@ -24,6 +26,7 @@ var (
     P map[string]string
     I []string
     C int
+    B bytes.Buffer
 )
 
 // peer id and conn cache
@@ -64,6 +67,19 @@ func PoolHandler(w http.ResponseWriter, r *http.Request) {
     }
     s1 := string(j0)
     fmt.Println(len(s1), s1)
+    s2 := I[C]
+    fmt.Println(C, s2)
+    s3 :=fmt.Sprintf("\"%s\":%s\n", s2, s1)
+    fmt.Println(s3)
+    B.WriteString(s3)
+    // timed ticker so will not race
+    C = C + 1
+    if C >= (len(I) - 1) {
+        fmt.Println("dune")
+        fmt.Println(B.String())
+        ioutil.WriteFile(SAVE, B.Bytes(), 0777)
+        fmt.Printf("File written: %s\n", SAVE)
+    }
     s0 := fmt.Sprintf("%d bytes read ok!", len(b0))
     w.Write([]byte(s0))
 }
@@ -76,8 +92,9 @@ func RibaHandler(w http.ResponseWriter, r *http.Request) {
 func Import() {
     // set up rune array and counter
     I = strings.Split(IMP, "")
-    fmt.Println(I)
+    fmt.Println(I, len(I))
     C = 0 // atomic increment
+    // var B bytes.Buffer
 }
 
 func main() {
