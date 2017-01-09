@@ -8,6 +8,7 @@ import (
     "math/rand"
     "net/http"
     "strconv"
+    "strings"
     "time"
 )
 
@@ -21,6 +22,8 @@ var (
     // peer id cache
     R *rand.Rand
     P map[string]string
+    I []string
+    C int
 )
 
 // peer id and conn cache
@@ -70,9 +73,17 @@ func RibaHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, INDEX)
 }
 
+func Import() {
+    // set up rune array and counter
+    I = strings.Split(IMP, "")
+    fmt.Println(I)
+    C = 0 // atomic increment
+}
+
 func main() {
     fmt.Println("starting riba web server on localhost:8080")
     R = rand.New(rand.NewSource(time.Now().UnixNano()))
+    Import()
     http.HandleFunc("/", RibaHandler)
     http.HandleFunc("/a", IdHandler)
     http.HandleFunc("/b", PoolHandler)
