@@ -35,8 +35,20 @@ var g = {
         dom.init();
         bmp.init();
 
+        // loop
+        g.tick = 0;
+        g.id = window.setInterval(g.bun, 1000);
+
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    },
+    "bun": function() {
+        console.log("tick count: " + g.tick);
+        if (g.tick >= 80) {
+            console.log("finished render!");
+            window.clearInterval(g.id);
+        }
+        g.tick = g.tick + 1;
     }
 }
 // bitmaps
@@ -250,7 +262,7 @@ function b64ToUint6 (nChr) {
 }
 function base64DecToArr (sBase64, nBlocksSize) {
    var sB64Enc = sBase64.replace(/[^A-Za-z0-9\+\/]/g, ""), nInLen = sB64Enc.length,
-       nOutLen = nBlocksSize ? Math.ceil((nInLen * 3 + 1 >> 2) / nBlocksSize) * nBlocksSize : nInLen * 3 + 1 >> 2, 
+       nOutLen = nBlocksSize ? Math.ceil((nInLen * 3 + 1 >> 2) / nBlocksSize) * nBlocksSize : nInLen * 3 + 1 >> 2,
        taBytes = new Uint8Array(nOutLen);
    for (var nMod3, nMod4, nUint24 = 0, nOutIdx = 0, nInIdx = 0; nInIdx < nInLen; nInIdx++) {
        nMod4 = nInIdx & 3;
