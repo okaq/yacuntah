@@ -15,8 +15,14 @@ func QibaHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, INDEX)
 }
 
+func OkHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r)
+    w.Write([]byte("ok qiba!"))
+}
+
 func main() {
     fmt.Println("starting server on http:localhost:8080")
     http.HandleFunc("/", QibaHandler)
+    http.HandleFunc("/a", OkHandler)
     http.ListenAndServe(":8080", nil)
 }

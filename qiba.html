@@ -31,10 +31,17 @@ var g = {
 
         // subs
         // dom init, base64 decode
-        console.log(noto);
+        // console.log(noto);
+        dom.init();
+        mon.init();
 
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
+    }
+}
+// monitor
+var mon = {
+    "init": function() {
     }
 }
 // dom
