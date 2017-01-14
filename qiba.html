@@ -33,15 +33,39 @@ var g = {
         // dom init, base64 decode
         // console.log(noto);
         dom.init();
-        mon.init();
+        bmp.init();
 
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
     }
 }
-// monitor
-var mon = {
+// bitmaps
+var bmp = {
     "init": function() {
+        bmp.a = {};
+        for (var k in noto) {
+            // console.log(k, noto[k]);
+            var b0 = noto[k];
+            var b1 = base64DecToArr(b0);
+            // console.log(k, b1);
+            bmp.a[k] = bmp.exp(b1);
+        }
+        console.log(bmp.a);
+    },
+    "exp": function(b0) {
+        // expansion of uint8array
+        // to bit strings
+        var r0 = [];
+        for (var i = 0; i < b0.length; i++) {
+            var b1 = b0[i];
+            var b2 = binStr(b1);
+            for (var j = 0; j < 8; j++) {
+                var b3 = b2.charAt(j);
+                var b4 = parseInt(b3, 10);
+                r0.push(b4);
+            }
+        }
+        return r0;
     }
 }
 // dom
