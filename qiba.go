@@ -24,5 +24,6 @@ func main() {
     fmt.Println("starting server on http:localhost:8080")
     http.HandleFunc("/", QibaHandler)
     http.HandleFunc("/a", OkHandler)
+    // handler for pause event
     http.ListenAndServe(":8080", nil)
 }

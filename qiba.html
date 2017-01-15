@@ -34,6 +34,7 @@ var g = {
         // console.log(noto);
         dom.init();
         bmp.init();
+        sce.init();
 
         // loop
         g.tick = 0;
@@ -44,25 +45,55 @@ var g = {
     },
     "bun": function() {
         console.log("tick count: " + g.tick);
-        if (g.tick >= 80) {
+        if (g.tick >= bmp.b.length) {
             console.log("finished render!");
             window.clearInterval(g.id);
         }
         g.tick = g.tick + 1;
     }
 }
+// scene
+var sce = {
+    "init": function() {
+        sce.a = dom.canvas([1920,1080,0,0]);
+        sce.b = dom.canvas([1024,1024,448,28]);
+        // each glyph bitmap is 64x64
+        // pixel size of 16
+        // total grid size is 1024x1024
+        dom.add(sce.a);
+        dom.add(sce.b);
+        sce.a.can.addEventListener("click", sce.click, false);
+        sce.b.can.addEventListener("click", sce.click, false);
+        sce.a.can.dataset.x = "a";
+        sce.b.can.dataset.x = "b";
+        sce.data();
+    },
+    "click": function(e) {
+        console.log(e);
+    },
+    "data": function() {
+        // init db
+        sce.db = {};
+        sce.db["a"] = [];
+        sce.db["b"] = [];
+    }
+}
 // bitmaps
 var bmp = {
     "init": function() {
         bmp.a = {};
+        bmp.b = [];
         for (var k in noto) {
             // console.log(k, noto[k]);
             var b0 = noto[k];
             var b1 = base64DecToArr(b0);
             // console.log(k, b1);
             bmp.a[k] = bmp.exp(b1);
+            bmp.b.push(k);
         }
-        console.log(bmp.a);
+        // console.log(bmp.b);
+        // console.log(bmp.b.length);
+        // 91 characters total
     },
     "exp": function(b0) {
         // expansion of uint8array
