@@ -49,6 +49,8 @@ var g = {
             console.log("finished render!");
             window.clearInterval(g.id);
         }
+        // render
+        ren.pole();
         g.tick = g.tick + 1;
     }
 }
@@ -76,6 +78,16 @@ var sce = {
         sce.db = {};
         sce.db["a"] = [];
         sce.db["b"] = [];
+    }
+}
+// render
+var ren = {
+    "pole": function() {
+        sce.a.con.fillStyle = rgba.rand();
+        sce.a.con.fillRect(0,0,sce.a.can.width,sce.a.can.height);
+        sce.b.con.fillStyle = rgba.rand();
+        sce.b.con.fillRect(0,0,sce.b.can.width,sce.b.can.height);
+
     }
 }
 // bitmaps
