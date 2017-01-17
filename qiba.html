@@ -48,6 +48,7 @@ var g = {
         if (g.tick >= bmp.b.length) {
             console.log("finished render!");
             window.clearInterval(g.id);
+            return;
         }
         // render
         ren.pole();
@@ -87,7 +88,21 @@ var ren = {
         sce.a.con.fillRect(0,0,sce.a.can.width,sce.a.can.height);
         sce.b.con.fillStyle = rgba.rand();
         sce.b.con.fillRect(0,0,sce.b.can.width,sce.b.can.height);
-
+        sce.b.con.fillStyle = rgba.rand();
+        // glyph
+        var d0 = bmp.b[g.tick];
+        var d1 = bmp.a[d0];
+        // console.log(d0,d1,d1.length);
+        for (var i = 0; i < d1.length; i++) {
+            if (d1[i] == 0) {
+                continue;
+            }
+            var x0 = i % 64;
+            var y0 = (i / 64) >>> 0;
+            var x1 = (x0 * 16) >>> 0;
+            var y1 = (y0 * 16) >>> 0;
+            sce.b.con.fillRect(x1,y1,16,16);
+        }
     }
 }
 // bitmaps
