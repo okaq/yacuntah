@@ -110,6 +110,32 @@ var ren = {
             var y1 = (y0 * 16) >>> 0;
             sce.b.con.fillRect(x1,y1,16,16);
         }
+        // single call to render
+        // glyph in input cell
+    },
+    "cell": function(k0, r0, c0) {
+        // input rect should be multiple of 64x64
+        // input key found in 91 glyph db
+        var d0 = bmp.a[k0];
+        var w0 = (r0[0] / 64) >>> 0;
+        var h0 = (r0[1] / 64) >>> 0;
+        // rand, can set to monochrome
+        var rgba0 = rgba.rand();
+        var rgba1 = rgba.rand();
+        for (var i = 0; i < d0.length; i++) {
+            if (d0[i] == 0) {
+                c0.con.fillStyle = rgba0;
+            } else {
+                c0.con.fillStyle = rgba1;
+            }
+            var x0 = i % 64;
+            var y0 = (i / 64) >>> 0;
+            var x1 = (x0 * w0) >>> 0;
+            var y1 = (y0 * h0) >>> 0;
+            var x2 = (x1 + r0[2]) >>> 0;
+            var y2 = (y1 + r0[3]) >>> 0;
+            c0.con.fillRect(x2,y2,w0,h0);
+        }
     }
 }
 // bitmaps
