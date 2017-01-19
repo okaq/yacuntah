@@ -93,7 +93,7 @@ var sce = {
         dom.remove(sce.b);
         sce.c = dom.canvas([1920,1024,0,28]);
         dom.add(sce.c);
-        sce.c.can.addEvenetListener("click", sce.click, false);
+        sce.c.can.addEventListener("click", sce.click, false);
         sce.c.can.dataset.x = "c";
 
         sce.db["c"] = {};
@@ -103,6 +103,13 @@ var sce = {
         sce.db["c"].ny = 16;
         sce.db["c"].nt = 480;
         // monochrome palatte set in renderer
+        // cell data
+        sce.db["c"].d = [];
+        for (var i = 0; i < sce.db["c"].nt; i++) {
+            var f0 = (Math.random() * bmp.b.length) >>> 0;
+            sce.db["c"].d[i] = bmp.b[f0];
+        }
+        console.log(sce.db);
     }
 }
 // render
