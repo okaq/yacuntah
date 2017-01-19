@@ -36,9 +36,13 @@ var g = {
         bmp.init();
         sce.init();
 
+        // grid setup
+        sce.arc();
+
+
         // loop
-        g.tick = 0;
-        g.id = window.setInterval(g.bun, 1000);
+        // g.tick = 0;
+        // g.id = window.setInterval(g.bun, 1000);
 
         // stats
         console.log("total render time: " + (window.performance.now() - t0) + "ms.");
@@ -83,9 +87,22 @@ var sce = {
     "arc": function() {
         // expand grid
         // single glyph cell 64x64
-        // width count = 16
-        // pane width = 1024, margin width = 28
-        // height count = 30
+        // height count = 16
+        // pane height = 1024, height margin = 28
+        // width count = 30, pane width 1920
+        dom.remove(sce.b);
+        sce.c = dom.canvas([1920,1024,0,28]);
+        dom.add(sce.c);
+        sce.c.can.addEvenetListener("click", sce.click, false);
+        sce.c.can.dataset.x = "c";
+
+        sce.db["c"] = {};
+        sce.db["c"].w = 64;
+        sce.db["c"].h = 64;
+        sce.db["c"].nx = 30;
+        sce.db["c"].ny = 16;
+        sce.db["c"].nt = 480;
+        // monochrome palatte set in renderer
     }
 }
 // render
