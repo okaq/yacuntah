@@ -38,7 +38,8 @@ var g = {
 
         // grid setup
         sce.arc();
-
+        // render
+        ren.tan();
 
         // loop
         // g.tick = 0;
@@ -144,11 +145,12 @@ var ren = {
         var w0 = (r0[0] / 64) >>> 0;
         var h0 = (r0[1] / 64) >>> 0;
         // rand, can set to monochrome
-        var rgba0 = rgba.rand();
-        var rgba1 = rgba.rand();
+        var rgba0 = rgba.css([255,255,255,1.0]); // rgba.rand();
+        var rgba1 = rgba.css([0,0,0,1.0]); // rgba.rand();
         for (var i = 0; i < d0.length; i++) {
             if (d0[i] == 0) {
-                c0.con.fillStyle = rgba0;
+                // c0.con.fillStyle = rgba0;
+                continue;
             } else {
                 c0.con.fillStyle = rgba1;
             }
@@ -159,6 +161,25 @@ var ren = {
             var x2 = (x1 + r0[2]) >>> 0;
             var y2 = (y1 + r0[3]) >>> 0;
             c0.con.fillRect(x2,y2,w0,h0);
+        }
+    },
+    "tan": function() {
+        // fill bkgd
+        sce.a.con.fillStyle = rgba.css([255,255,255,1.0]); // rgba.rand();
+        sce.a.con.fillRect(0,0,sce.a.can.width,sce.a.can.height);
+        for (var i = 0; i < sce.db["c"].d.length; i++) {
+            var k0 = sce.db["c"].d[i];
+            var x0 = i % 30;
+            var y0 = (i / 30) >>> 0;
+            var r0 = [];
+            r0[0] = 64;
+            r0[1] = 64;
+            r0[2] = (x0 * 64) >>> 0;
+            r0[3] = (y0 * 64) >>> 0;
+            ren.cell(k0, r0, sce.c);
+            // optimize for monochrome
+            // 5.0s render for rand
+            // 4.0s for mono, 0.5s total optimized
         }
     }
 }
