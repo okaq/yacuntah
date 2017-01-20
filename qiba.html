@@ -40,6 +40,8 @@ var g = {
         sce.arc();
         // render
         ren.tan();
+        // flip
+        bit.test();
         // set db or dataset cells for bit flipping
         // handle bit ops (flip, moirror, shuffle)
         // in dedicated class
@@ -186,6 +188,28 @@ var ren = {
             // 5.0s render for rand
             // 4.0s for mono, 0.5s total optimized
         }
+    }
+}
+// bit ops
+var bit = {
+    "flip": function(d0) {
+        // input typical square array of bits
+        // horizontal, vertical
+        // shift by N rows or cols
+        // mirror from center or edge
+    },
+    "san": function(d0) {
+        // sanity check, endure square
+        var d1 = d0.length;
+        return Math.sqrt(d1) % 1 === 0;
+    },
+    "test": function() {
+    },
+    "rows": function() {
+        // return rows as arrays
+    },
+    "cols": function() {
+        // return cols as arrays
     }
 }
 // bitmaps
