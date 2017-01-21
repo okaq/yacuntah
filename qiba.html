@@ -37,10 +37,13 @@ var g = {
         sce.init();
 
         // grid setup
-        sce.arc();
+        // sce.arc();
         // render
-        ren.tan();
+        // ren.tan();
         // flip
+        // bitops test suite
+        sce.kit();
+        ren.kit();
         bit.test();
         // set db or dataset cells for bit flipping
         // handle bit ops (flip, moirror, shuffle)
@@ -118,6 +121,23 @@ var sce = {
             sce.db["c"].d[i] = bmp.b[f0];
         }
         console.log(sce.db);
+    },
+    "kit": function() {
+        // add 8 panes, use dataset to set bit ops
+        sce.e = [];
+        for (var i = 0; i < 8; i++) {
+            var r0 = [];
+            r0[0] = 128;
+            r0[1] = 128;
+            r0[2] = (i * 128) >>> 0;
+            r0[2] = (r0[2] + 448) >>> 0;
+            r0[3] = 448;
+            sce.e[i] = dom.canvas(r0);
+            dom.add(sce.e[i]);
+            var k0 = "e_" + i;
+            sce.e[i].can.dataset.x = k0;
+            sce.e[i].can.addEventListener("click", sce.click, false);
+        }
     }
 }
 // render
@@ -188,6 +208,16 @@ var ren = {
             // 5.0s render for rand
             // 4.0s for mono, 0.5s total optimized
         }
+    },
+    "kit": function() {
+        var c0 = [sce.a,sce.b];
+        for (var i = 0; i < sce.e.length; i++) {
+            c0.push(sce.e[i]);
+        }
+        for (var i = 0; i < c0.length; i++) {
+            c0[i].con.fillStyle = rgba.rand();
+            c0[i].con.fillRect(0,0,c0[i].can.width,c0[i].can.height);
+        }
     }
 }
 // bit ops
@@ -210,9 +240,11 @@ var bit = {
     },
     "rows": function(d0) {
         // return rows as arrays
+        // use slices
     },
     "cols": function(d0) {
         // return cols as arrays
+        // iterate over all placing i % n into nth array
     }
 }
 // bitmaps
