@@ -201,14 +201,17 @@ var bit = {
     "san": function(d0) {
         // sanity check, endure square
         var d1 = d0.length;
-        return Math.sqrt(d1) % 1 === 0;
+        var d2 = Math.sqrt(d1);
+        var d3 = d2 % 1 === 0;
+        // return Math.sqrt(d1) % 1 === 0;
+        return [d1,d2,d3];
     },
     "test": function() {
     },
-    "rows": function() {
+    "rows": function(d0) {
         // return rows as arrays
     },
-    "cols": function() {
+    "cols": function(d0) {
         // return cols as arrays
     }
 }
