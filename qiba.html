@@ -264,6 +264,23 @@ var bit = {
     "cols": function(d0) {
         // return cols as arrays
         // iterate over all placing i % n into nth array
+        var d1 = bit.san(d0);
+        if (d1[2] == false) {
+            console.log("bit.cols: input array must be square");
+            return;
+        }
+        var r0 = [];
+        for (var i = 0; i < d0.length; i++) {
+            var x0 = i % d1[1];
+            var y0 = (i / d1[1]) >>> 0;
+            if (y0 == 0) {
+                r0[x0] = [];
+            }
+            r0[x0][y0] = d0[i];
+        }
+        // flatten
+        var r1 = bit.flat(r0);
+        return r1;
     },
     "flat": function(d0) {
         // flatten a 2D array
