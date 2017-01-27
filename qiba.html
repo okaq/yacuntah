@@ -140,6 +140,7 @@ var sce = {
             sce.db[k0] = {};
             var f0 = (Math.random() * bmp.b.length) >>> 0;
             sce.db[k0].d = bmp.b[f0];
+            // set a random bit operation
         }
     }
 }
@@ -222,6 +223,9 @@ var ren = {
             c0[i].con.fillRect(0,0,c0[i].can.width,c0[i].can.height);
         }
         // glyph
+        for (var i = 2; i < c0.length; i++) {
+            // draw in cell
+        }
     }
 }
 // bit ops
@@ -231,6 +235,10 @@ var bit = {
         // horizontal, vertical
         // shift by N rows or cols
         // mirror from center or edge
+        // filter ops
+        // add subtract value per frame
+
+        // flatten after flipping
     },
     "san": function(d0) {
         // sanity check, endure square
@@ -291,6 +299,10 @@ var bit = {
             }
         }
         return r0;
+    },
+    "rand": function() {
+        // return a random function
+        bit.fns = [];
     }
 }
 // bitmaps
