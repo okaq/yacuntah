@@ -217,12 +217,21 @@ var ren = {
     },
     "kit": function() {
         var c0 = [sce.a,sce.b];
+        var c1 = [];
         for (var i = 0; i < sce.e.length; i++) {
-            c0.push(sce.e[i]);
+            c1.push(sce.e[i]);
         }
         for (var i = 0; i < c0.length; i++) {
             c0[i].con.fillStyle = rgba.rand();
             c0[i].con.fillRect(0,0,c0[i].can.width,c0[i].can.height);
+        }
+        for (var i = 0; i < c1.length; i++) {
+            c1[i].con.fillStyle = rgba.css([255,255,255,1.0]);
+            c1[i].con.fillRect(0,0,c1[i].can.width,c1[i].can.height);
+            var k0 = c1[i].can.dataset.x;
+            console.log("key id: " + k0);
+            var d0 = sce.db[k0].d;
+            console.log("key bitmap: " + d0);
         }
         // glyph
         for (var i = 2; i < c0.length; i++) {
