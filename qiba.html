@@ -226,12 +226,14 @@ var ren = {
             c0[i].con.fillRect(0,0,c0[i].can.width,c0[i].can.height);
         }
         for (var i = 0; i < c1.length; i++) {
-            c1[i].con.fillStyle = rgba.css([255,255,255,1.0]);
+            c1[i].con.fillStyle = rgba.css([0,0,0,1.0]);
             c1[i].con.fillRect(0,0,c1[i].can.width,c1[i].can.height);
             var k0 = c1[i].can.dataset.x;
             console.log("key id: " + k0);
             var d0 = sce.db[k0].d;
             console.log("key bitmap: " + d0);
+            var r0 = [128,128,0,0];
+            ren.cell(d0,r0,c1[i]);
         }
         // glyph
         for (var i = 2; i < c0.length; i++) {
