@@ -143,6 +143,12 @@ var sce = {
             var f0 = (Math.random() * bmp.b.length) >>> 0;
             sce.db[k0].d = bmp.b[f0];
             // set a random bit operation
+
+            // two entries in db
+            // current state of the bmp data (post-transform)
+            // stack of function call history
+            // some will be reversible, like flip functions
+            // some will be irreversible, like scramble
         }
     }
 }
@@ -234,11 +240,13 @@ var ren = {
             console.log("key bitmap: " + d0);
             var r0 = [128,128,0,0];
             ren.cell(d0,r0,c1[i]);
+            // bit flip flag determines render func
+            // lookup and shift data for render input
         }
         // glyph
-        for (var i = 2; i < c0.length; i++) {
+        // for (var i = 2; i < c0.length; i++) {
             // draw in cell
-        }
+        // }
     }
 }
 // bit ops
